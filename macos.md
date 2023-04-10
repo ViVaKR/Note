@@ -1,7 +1,7 @@
 # macOS
 
-
 ## Shell Commands
+
 ```bash
     # Detail cpu info
     sysctl -a | grep machdep.cpu
@@ -34,3 +34,7 @@
     sysctl kern.osrevision
     sysctl kern.osrevision
 ```
+
+## 맥 단축키 (mac shortcuts)
+
+- 파인더에서 숨김파일 보기 : Shift + CMD + >

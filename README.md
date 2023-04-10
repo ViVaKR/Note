@@ -1,6 +1,7 @@
 # Note
 
 ## Create New Repository
+
 ```bash
     # 'main', 'trunk' and 'development'
     git config --global init.defaultBranch main
