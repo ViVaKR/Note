@@ -21,6 +21,9 @@
     lsof -i -P | grep LISTEN | grep :$PORT
     # sudo kill -9 <PID>
     
+    # 80 포트
+    lsof -i:80
+    
     # Get history with date
     history -E
     
@@ -35,6 +38,37 @@
     sysctl kern.osrevision
 ```
 
-## 맥 단축키 (mac shortcuts)
+## Home brew
 
-- 파인더에서 숨김파일 보기 : Shift + CMD + >
+## mac port
+
+```bash
+ sudo port selfupdate
+ sudo port upgrade outdated
+
+ sudo prot install ruby
+ ruby --version
+
+ port installed requested
+```
+
+## 맥 단축키
+
+- 파인더
+  - 숨김파일 보기 : SHIFT + CMD + >
+
+- 터미널
+  - 지우기 : CTR: + L
+
+- 이모티콘 : CTRL + CMD + SPACE
+
+- Swift ShortCut
+  - ShortCut : `CMD + ,`
+  - Balance Indentation, Code Formatting : `CTRL + I`
+  - Code Complete : `CTRL + SPACE`
+  - Moving Lines : `ALT + CMD + [  or  ]`
+  - Delete Entire Line : `CMD + D`
+  - Comment Current Line / Block : `CMD + /`
+  - Jump to Definition : `CTRL + CMD +J`
+  - Jump to Line : `CMD + L`
+  - Go to End or First : `CMD + Arrow (<- or ->)
