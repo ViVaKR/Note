@@ -1,6 +1,7 @@
 # 대한민국 주소 구분
 
 - 우편번호 : ZipCode
+
 - 특별시, 광역시, 도
   - 서울특별시: Seoul
   - 세종특별자치시(世宗特別自治市) : Sejong
@@ -18,7 +19,7 @@
   - 전라남도(全羅南道) : Jeollanam-do
   - 경상북도(慶尙北道) : Gyeongsangbuk-do
   - 경상남도(慶尙南道) : Gyeongsangnam-do
-  - 제주특별자치도(濟州特別自治道) : Jeju-do (Jeju Special Self - Governing Province)
+  - 제주특별자치도(濟州特別自治道) : Jeju-do (Jeju Special Self-Governing Province)
 
 - 시군구 : SiGunGu
 - 읍면동 : EupMyeonDong

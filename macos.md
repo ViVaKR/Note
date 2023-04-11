@@ -62,7 +62,7 @@
 
 - 이모티콘 : CTRL + CMD + SPACE
 
-- Swift ShortCut
+- XCode ShortCut
   - ShortCut : `CMD + ,`
   - Balance Indentation, Code Formatting : `CTRL + I`
   - Code Complete : `CTRL + SPACE`
@@ -72,3 +72,9 @@
   - Jump to Definition : `CTRL + CMD +J`
   - Jump to Line : `CMD + L`
   - Go to End or First : `CMD + Arrow (<- or ->)
+  - Go to End of Right : `CTRL + E`
+  - 줄 복사하기(Duplicate Line) 사용자 단축기 생성
+    1. `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`  
+    2. `Add Customized (Dictonary) -> (Add) Duplicate Current Line (String)`  
+    3. `selectLine:, copy:, moveToBeginningOfLine:, paste:, moveToEndOfLine:`  
+    4. Restart XCode : CMD + , -> Search `Duplicate` -> Asign -> `CTRL + SHIFT + L`
