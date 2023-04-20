@@ -55,12 +55,17 @@
 ## 맥 단축키
 
 - 파인더
-  - 숨김파일 보기 : SHIFT + CMD + >
+  - 숨김파일 보기 : `SHIFT` + `CMD` + `.`(>)
 
 - 터미널
-  - 지우기 : CTR: + L
+  - 지우기 : `CTR: + L`
+  - 커서 라인 처음으로 이동 : `CTRL + A`
+  - 커서 라인 뒤로 이동 : `CTRL + E`
+  - 현재 라인 지우기 : `CTRL + U`
+  - 직전 단어 지우기 : `CTRL + W`
+  - 라인 취소 새로운 프롬프트 : `CTRL + C`
 
-- 이모티콘 : CTRL + CMD + SPACE
+- 이모티콘 : `CTRL + CMD + SPACE`
 
 - XCode ShortCut
   - ShortCut : `CMD + ,`
@@ -74,7 +79,26 @@
   - Go to End or First : `CMD + Arrow (<- or ->)
   - Go to End of Right : `CTRL + E`
   - 줄 복사하기(Duplicate Line) 사용자 단축기 생성
-    1. `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`  
+    1. Open : `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`  
     2. `Add Customized (Dictonary) -> (Add) Duplicate Current Line (String)`  
     3. `selectLine:, copy:, moveToBeginningOfLine:, paste:, moveToEndOfLine:`  
+
+( IDETextKeyBindingSet.plist e.g.)  
+
+```xml
+    <key>Insert Line Below</key>
+    <string>moveToEndOfLine:, insertNewline:</string>
+    <key>Insert Line Above</key>
+    <string>moveUp:, moveToEndOfLine:, insertNewline:</string>
+```
     4. Restart XCode : CMD + , -> Search `Duplicate` -> Asign -> `CTRL + SHIFT + L`
+
+### 마이크로소프트 오피스 자동 업데이트 비활성화 항목
+>
+> MAC OS 버전이 낮아 더이상 업데이트가 불가능한 상태에서 지속적인 업데이트 안내 끄기
+> Finder -> `CMD + SHIFT + G` 로 아래의 폴더로 이동 모두 삭제
+>
+1. /Library/Application Support/Microsoft/MAU2.0/`Microsoft 자동 업데이트.app`
+2. /Library/LaunchAgents/`com.microsoft.update.agent.plist`
+3. /Library/LaunchAgents/`com.microsoft.autoupdate.helper.plist`
+4. /Library/PrivilegedHelperTools/`com.microsoft.autoupdate.helper.plist`
