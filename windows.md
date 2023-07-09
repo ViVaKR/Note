@@ -142,3 +142,45 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 9. 사용자 프로필을 선택하고 F2 키를 눌러 이름을 바꿈, 레지스트리에 입력한 사용자 이름과 일치 해야함
 
 ---
+
+## 파일탐색기 드라이브 숨기기 및 이중 표시 숨기기
+
+### 드라이브 숨기기 : 분리된 것은 아님
+
+- Registry : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer`
+- Add Key : `NoDrives` & Add Value
+  * A: 1
+  * B: 2
+  * C: 4
+  * D: 8
+  * E: 16
+  * F: 32
+  * G: 64
+  * H: 128
+  * I: 256
+  * J: 512
+  * K: 1024
+  * L: 2048
+  * M: 4096
+  * N: 8192
+  * O: 16384
+  * P: 32768
+  * Q: 65536
+  * R: 131072
+  * S: 262144
+  * T: 524288
+  * U: 1048576
+  * V: 2097152
+  * W: 4194304
+  * X: 8388608
+  * Y: 16777216
+  * Z: 33554432
+  * ALL: 67108863
+
+- (ex1) Hide `F` Drive -> NoDrive = `32`
+- (ex2) Hide `J & K` Drives -> NoDrive = `1536` (= 512 + 1024)
+
+### 이중 표시 숨기기
+- Remove Registry Keys : `{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}` 
+1. 32-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
+2. 64-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
