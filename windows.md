@@ -65,8 +65,17 @@ LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21787
 ## 시스템 점검
 
 ```ps1
+	Dism /online /Cleanup-Image /StartComponentCleanup
+	Dism /online /Cleanup-Image /StartComponentCleanup /ResetBase
+	Dism /online /Cleanup-Image /restorehealth
+	SFC /scannow
 	DISM /Online /Cleanup-Image /ScanHealth
+
+	# 관련 폴더 : C:\Windows\WinSxS
 ```
+
+## 디스크정리
+cleanmgr
 
 ## Remove Defautl App
 
@@ -184,3 +193,21 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 - Remove Registry Keys : `{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}` 
 1. 32-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
 2. 64-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
+
+
+## Private IP Address Ranges
+
+- 10.0.0.0 ~10.255.255.255
+  - Hosts per Network : 16,777,214
+  - Number per Network : 126
+
+- 172.16.0.0 ~172.31.255.255
+  - 65,524
+  - 16,382
+
+- 192.168.0.0 ~ 192.168.255.255
+  - 254
+  - 2,097,150
+
+- Special IP Addresses
+  - 127.0.0.1 ~127.255.255.255	
