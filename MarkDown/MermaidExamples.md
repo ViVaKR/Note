@@ -1,3 +1,11 @@
+# Mermaid
+
+## install
+
+```bash
+    npm install -g @mermaid-js/mermaid-cli
+    mmdc -i src.md -o dest.md
+```
 
 ```mermaid
 graph LR
@@ -21,7 +29,6 @@ TB(= TD) : 위에서 아래로
 BT : 아래에서 위로
 RL : 오른쪽에서 왼쪽으로
 LR : 왼쪽에서 오른쪽으로
-
 
 flowchart LR
     id[구매]
@@ -58,7 +65,6 @@ sequenceDiagram
     Bob-->>John: Jolly good!
 
 ```
-
 
 ```mermaid
 gantt
@@ -139,6 +145,7 @@ pie title Pets adopted by volunteers
 ```
 
 # Timeline
+
 ```mermaid
 timeline
     title History of Social Media Platform
@@ -148,6 +155,7 @@ timeline
     2005 : Youtube
     2006 : Twitter
 ```
+
 ```mermaid
 mindmap
   root((mindmap))

@@ -20,9 +20,4 @@
     code . # excute visual studio code (installed)
 ```
 
-# mermaid
 
-```bash
-    npm install -g @mermaid-js/mermaid-cli
-    mmdc -i src.md -o dest.md
-```
