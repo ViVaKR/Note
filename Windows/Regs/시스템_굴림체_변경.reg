@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts]
+"Batang & BatangChe & Gungsuh & GungsuhChe (TrueType)"=-
+"Gulim & GulimChe & Dotum & DotumChe (TrueType)"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]
+"Gulim"="Malgun Gothic"
+"GulimChe"="Malgun Gothic"
+"Dotum"="Malgun Gothic"
+"DotumChe"="Malgun Gothic"
+"Batang"="Malgun Gothic"
+"BatangChe"="Malgun Gothic"
+"Gungsuh"="Malgun Gothic"
+"GungsuhChe"="Malgun Gothic"
