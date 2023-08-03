@@ -11,27 +11,27 @@
 ## 파일 탐색기에서 `OneDrive` 숨기기
 
 ```registry
-	HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
-	HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
+ HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
+ HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
 
-	HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
-	HKEY_CLASSES_ROOT\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
+ HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
+ HKEY_CLASSES_ROOT\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
 
-	System.IsPinnedToNameSpaceTree => 0으로 설정
+ System.IsPinnedToNameSpaceTree => 0으로 설정
 ```
 
 ## `OneDrive Biz` 이름 변경하기
 
 ```registry
-	HKEY_CURRENT_USER (HKCU) (4 locations)
-	HKCU\Software\Microsoft\OneDrive\Accounts\Business1\UserFolder
-	HKCU\Software\Microsoft\OneDrive\Accounts\Business1\ScopeIdToMountPointPathCache\(ID)
-	HKCU\Software\Microsoft\OneDrive\Accounts\Business1\Tenants\(name)\(path)
-	HKCU\Software\SyncEngines\Providers\OneDrive\(ID)\MountPoint
+ HKEY_CURRENT_USER (HKCU) (4 locations)
+ HKCU\Software\Microsoft\OneDrive\Accounts\Business1\UserFolder
+ HKCU\Software\Microsoft\OneDrive\Accounts\Business1\ScopeIdToMountPointPathCache\(ID)
+ HKCU\Software\Microsoft\OneDrive\Accounts\Business1\Tenants\(name)\(path)
+ HKCU\Software\SyncEngines\Providers\OneDrive\(ID)\MountPoint
 
-	HKEY_LOCAL_MACHINE (HKLM) (2 locations)
-	HKLM\SOFTWARE\Microsoft\Security Center\Provider\CBP\(ID)\NAMESPACE
-	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SyncRootManager\OneDrive!(ID)\UserSyncRoots\(SID)
+ HKEY_LOCAL_MACHINE (HKLM) (2 locations)
+ HKLM\SOFTWARE\Microsoft\Security Center\Provider\CBP\(ID)\NAMESPACE
+ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\SyncRootManager\OneDrive!(ID)\UserSyncRoots\(SID)
 ```
 
 - Quite OneDrive
@@ -65,23 +65,25 @@ LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21787
 ## 시스템 점검
 
 ```ps1
-	Dism /online /Cleanup-Image /StartComponentCleanup
-	Dism /online /Cleanup-Image /StartComponentCleanup /ResetBase
-	Dism /online /Cleanup-Image /restorehealth
-	SFC /scannow
-	DISM /Online /Cleanup-Image /ScanHealth
+ Dism /online /Cleanup-Image /StartComponentCleanup
+ Dism /online /Cleanup-Image /StartComponentCleanup /ResetBase
+ Dism /online /Cleanup-Image /restorehealth
+ DISM /Online /Cleanup-Image /ScanHealth
+ SFC /scannow
 
-	# 관련 폴더 : C:\Windows\WinSxS
+ # 관련 폴더 : C:\Windows\WinSxS
 ```
 
 ## 디스크정리
+
 cleanmgr
 
 ## Remove Defautl App
 
 ```ps1
-	Get-AppxPackage | Select-Object Name, PackageFullName | Format-List
-	Remove-AppxPackage [PackageFullName]
+ Get-AppxPackage | Select-Object Name, PackageFullName | Format-List
+ Remove-AppxPackage [PackageFullName]
+  Microsoft.SysinternalsSuite_2023.6.1.0_x64__8wekyb3d8bbwe
 ```
 
 - Uninstall 3D Builder: Get-AppxPackage *3dbuilder* | Remove-AppxPackage
@@ -135,7 +137,7 @@ cleanmgr
 
 ## 사용자 폴더 변경
 
-Windows 11 에서 새 사용자 계정을 만들면 운영체제(OS) 가 자동으로 
+Windows 11 에서 새 사용자 계정을 만들면 운영체제(OS) 가 자동으로
 C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 
 1. 사용자 명과 SID 확인하기 `$ wmic useraccount get name, SID``
@@ -146,7 +148,7 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 4. 동일한 SID 와 동일한 키 클릭
 5. ProfileImagePath 값 수정선택
 6. 프로필 폴더에 사용할 이름을 입력하고 [확인] 클릭
-7. Win + E 파일 탐색기 를 열고 
+7. Win + E 파일 탐색기 를 열고
 8. `C:\Users\` 로 이동
 9. 사용자 프로필을 선택하고 F2 키를 눌러 이름을 바꿈, 레지스트리에 입력한 사용자 이름과 일치 해야함
 
@@ -158,42 +160,45 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 
 - Registry : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer`
 - Add Key : `NoDrives` & Add Value
-  * A: 1
-  * B: 2
-  * C: 4
-  * D: 8
-  * E: 16
-  * F: 32
-  * G: 64
-  * H: 128
-  * I: 256
-  * J: 512
-  * K: 1024
-  * L: 2048
-  * M: 4096
-  * N: 8192
-  * O: 16384
-  * P: 32768
-  * Q: 65536
-  * R: 131072
-  * S: 262144
-  * T: 524288
-  * U: 1048576
-  * V: 2097152
-  * W: 4194304
-  * X: 8388608
-  * Y: 16777216
-  * Z: 33554432
-  * ALL: 67108863
+  - A: 1
+  - B: 2
+  - C: 4
+  - D: 8
+  - E: 16
+  - F: 32
+  - G: 64
+  - H: 128
+  - I: 256
+  - J: 512
+  - K: 1024
+  - L: 2048
+  - M: 4096
+  - N: 8192
+  - O: 16384
+  - P: 32768
+  - Q: 65536
+  - R: 131072
+  - S: 262144
+  - T: 524288
+  - U: 1048576
+  - V: 2097152
+  - W: 4194304
+  - X: 8388608
+  - Y: 16777216
+  - Z: 33554432
+  - ALL: 67108863
 
 - (ex1) Hide `F` Drive -> NoDrive = `32`
 - (ex2) Hide `J & K` Drives -> NoDrive = `1536` (= 512 + 1024)
 
 ### 이중 표시 숨기기
-- Remove Registry Keys : `{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}` 
-1. 32-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
-2. 64-bit : `HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
 
+- Remove Registry Keys : `{F5FB2C77-0E2F-4A16-A381-3E560C68BC83}`
+
+1. 32-bit :
+  `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
+2. 64-bit :
+  `HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\DelegateFolders`
 
 ## Private IP Address Ranges
 
@@ -210,4 +215,4 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
   - 2,097,150
 
 - Special IP Addresses
-  - 127.0.0.1 ~127.255.255.255	
+  - 127.0.0.1 ~127.255.255.255 
