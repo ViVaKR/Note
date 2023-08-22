@@ -11,13 +11,17 @@
 ## 파일 탐색기에서 `OneDrive` 숨기기
 
 ```registry
- HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
- HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
 
- HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
- HKEY_CLASSES_ROOT\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761}
+컴퓨터\HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
+컴퓨터\HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761} - 아래로 변경
+컴퓨터\HKEY_CLASSES_ROOT\WOW6432Node\CLSID\{04271989-C4D2-DA29-E5E7-42D6079C20CC}
 
- System.IsPinnedToNameSpaceTree => 0으로 설정
+컴퓨터\HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}
+컴퓨터\HKEY_CLASSES_ROOT\CLSID\{04271989-C4D2-4908-1D03-D3A5C472F761} - 아래로 변경됨
+컴퓨터\HKEY_CLASSES_ROOT\CLSID\{04271989-C4D2-DA29-E5E7-42D6079C20CC}
+
+-> System.IsPinnedToNameSpaceTree => 0으로 설정
+
 ```
 
 ## `OneDrive Biz` 이름 변경하기
@@ -42,6 +46,14 @@
 
 Right click edit - Find the path of your onedrive then change it to the desired path and name
 E.g. if it c:\user\onedrive - company name then change it to the same as path of what you have created in 2nd step
+
+- OneDrive 종료
+- OneDrive 데이터를 동기화하려는 위치에 폴더를 만듭니다(OneDrive에 원하는 이름 지정).
+- "%LOCALAPPDATA%\Microsoft\OneDrive\settings"로 이동합니다.
+- Business1 폴더 열기(OneDrive를 통해 동기화하는 계정 수에 따라 Business2 또는 3이 될 수 있음)
+- 다음과 유사하고 다소 긴 이름을 가진 ".ini" 파일을 찾습니다: 31c26d83-4db2-4503-a8g0-a3e14e7bcchd.ini
+- 편집을 마우스 오른쪽 버튼으로 클릭 - OneDrive의 경로를 찾은 다음 원하는 경로와 이름으로 변경합니다.
+- 예: c:\user\onedrive - 회사 이름인 경우 2단계에서 생성한 경로와 동일하게 변경합니다.
 
 ---
 
@@ -215,4 +227,4 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
   - 2,097,150
 
 - Special IP Addresses
-  - 127.0.0.1 ~127.255.255.255 
+  - 127.0.0.1 ~127.255.255.255
