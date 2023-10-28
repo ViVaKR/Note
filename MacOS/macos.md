@@ -103,7 +103,7 @@
 3. /Library/LaunchAgents/`com.microsoft.autoupdate.helper.plist`
 4. /Library/PrivilegedHelperTools/`com.microsoft.autoupdate.helper.plist`
 
-## Increase sudo timeout 
+## Change Sudo Timeout 
 
 ```base
   sudo visudo
