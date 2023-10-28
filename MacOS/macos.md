@@ -102,3 +102,18 @@
 2. /Library/LaunchAgents/`com.microsoft.update.agent.plist`
 3. /Library/LaunchAgents/`com.microsoft.autoupdate.helper.plist`
 4. /Library/PrivilegedHelperTools/`com.microsoft.autoupdate.helper.plist`
+
+## Increase sudo timeout 
+
+```base
+  sudo visudo
+```
+
+* (10 minute password caching)
+  * `Defaults timestamp_timeout=10`
+
+* No password caching
+  * `Defaults timestamp_timeout=0`
+
+---
+
