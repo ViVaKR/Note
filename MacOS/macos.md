@@ -117,3 +117,14 @@
 
 ---
 
+# Automate SSH Login
+$ ssh-keygen -t rsa -b 2048
+
+$ ssh-copy-id id@target-server
+$ password enter
+$ ssh 'id@server'
+
+.ssh/authorized_keys
+
+$ sudo apt-get install sshpass
+$ sshpass -p your_password ssh user@hostname
