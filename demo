@@ -1,0 +1,20 @@
+Vim Cheatsheet Demo
+
+`:set nu` - Set line number
+
+Cusor Movement
+
+`h` - move cursor left
+`j` - move cursor down
+`k` - move cursor up
+`l` - move cursor right
+`H` - move to top of screen
+`L` - Move to bottom of screen
+`w` - jump forwards to the start of a word
+`W` - jump forwards to the start of a word
+`e` - jump forwards to the end of a word
+`E` - jump forwards to the start of a word
+`b` - jump backwards to the start of a word
+`B` - jump backwords to the start of a word
+`0` - jump to the start of the line
+
