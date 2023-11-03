@@ -42,4 +42,16 @@
     $ mtr kernel.org
 
     $ traceroute kernel
+
+    # ssh
+    $ ssh-keygen -t ed25519 -b 4096
+
+    # 우분투 버전 업그레이드
+    # kernel upgrade : -> Prompt=normal
+    $ sudo nano /etc/update-manager/release-upgrades
+
+    $ sudo iptables -I INPUT -p tcp --dport 1022 -j ACCEPT
+    $ sudo do-release-upgrade
 ```
+
+

@@ -38,8 +38,6 @@
     sysctl kern.osrevision
 ```
 
-## Home brew
-
 ## mac port
 
 ```bash
@@ -117,7 +115,9 @@
 
 ---
 
-# Automate SSH Login
+## Automate SSH Login
+
+```bash
 $ ssh-keygen -t rsa -b 2048
 
 $ ssh-copy-id id@target-server
@@ -128,3 +128,11 @@ $ ssh 'id@server'
 
 $ sudo apt-get install sshpass
 $ sshpass -p your_password ssh user@hostname
+```
+
+## ssh copy 
+
+```bash
+  # scp remote local or scp local remote
+  $ scp vivabm@ns.vivabm.local:/etc/resolv.c
+```
