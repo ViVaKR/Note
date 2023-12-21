@@ -136,3 +136,4 @@ $ sshpass -p your_password ssh user@hostname
   # scp remote local or scp local remote
   $ scp vivabm@ns.vivabm.local:/etc/resolv.c
 ```
+

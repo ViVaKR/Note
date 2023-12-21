@@ -15,8 +15,6 @@ rm -rf ~/Library/Application\ Support/VisualStudio
 rm -rf ~/Library/Application\ Support/VisualStudio/7.0/LocalInstall/Addins/
 
 # Uninstall Xamarin.Android
-echo "Uninstalling Xamarin.Android..."
-
 sudo rm -rf /Developer/MonoDroid
 rm -rf ~/Library/MonoAndroid
 sudo pkgutil --forget com.xamarin.android.pkg
