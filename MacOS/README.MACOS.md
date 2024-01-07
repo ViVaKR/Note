@@ -137,3 +137,10 @@ $ sshpass -p your_password ssh user@hostname
   $ scp vivabm@ns.vivabm.local:/etc/resolv.c
 ```
 
+## Find IP Address
+
+```bash
+  $ ifconfig en0
+  $ ipconfig getiflist
+  $ ifconfig | grep "inet "
+```
