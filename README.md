@@ -19,5 +19,3 @@
     git push -u origin main
     code . # excute visual studio code (installed)
 ```
-
-

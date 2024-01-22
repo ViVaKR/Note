@@ -12,10 +12,7 @@
     # Get Listen process
     netstat -an | grep LISTEN
     lsof -iTCP -sTCP:LISTEN -n -P
-    
-    # brew clean cache all
-    # /User/${whoami}/Library/Caches/Homebrew/downloads/
-    brew cleanup --prune=all
+
     
     # 시스템에서 열린 파일 목록 가져오기 (프로세스, 디바이스, 종류, 포트 ) 
     lsof -i -P | grep LISTEN | grep :$PORT
@@ -26,7 +23,8 @@
     
     # Get history with date
     history -E
-    
+    $ !<history number>
+
     # Read systemlog filter "sshd"
     cat /var/log/system.lg | grep sshd
     
