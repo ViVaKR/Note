@@ -228,3 +228,17 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 
 - Special IP Addresses
   - 127.0.0.1 ~127.255.255.255
+
+
+## winget
+
+```bash
+  $ winget list
+  $ winget list --name git -s winget
+  $ winget list --id Git.Git
+  $ winget search git
+  $ winget install git -e -v <version> -s winget
+  $ winget upgrade git
+  $ winget uninstall git
+  $ winget source update
+```
