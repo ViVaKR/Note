@@ -1,9 +1,9 @@
-Vim Cheatsheet Demo
+# Vim Cheatsheet Demo
 
 `:set nu` - Set line number
 `:set nonu` - Remove line number
 
-Cusor Movement
+## Cusor
 
 `h` - move cursor left
 `j` - move cursor down

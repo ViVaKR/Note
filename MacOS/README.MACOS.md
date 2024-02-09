@@ -3,31 +3,48 @@
 ## Shell Commands
 
 ```bash
+
+    # Get IP Address
+    $ ipconfig getifaddr en0
+    $ ip=`ipconfig getifaddr en0`; echo $ip
+
+    # Get Subnet Mask
+    $ ipconfig getoption en0 subnet_mask
+
+    # Get DNS Server
+    $ ipconfig getoption en0 domain_name_server
+
+    # Get Network Info
+    $ ifconfig en0
+
+    # Route
+    $ netstat -nr
+
     # Detail cpu info
     sysctl -a | grep machdep.cpu
-    
+
     # Getting list of pids and process names
     ps auxc
-    
+
     # Get Listen process
     netstat -an | grep LISTEN
     lsof -iTCP -sTCP:LISTEN -n -P
 
-    
-    # 시스템에서 열린 파일 목록 가져오기 (프로세스, 디바이스, 종류, 포트 ) 
+
+    # 시스템에서 열린 파일 목록 가져오기 (프로세스, 디바이스, 종류, 포트 )
     lsof -i -P | grep LISTEN | grep :$PORT
     # sudo kill -9 <PID>
-    
+
     # 80 포트
     lsof -i:80
-    
+
     # Get history with date
     history -E
     $ !<history number>
 
     # Read systemlog filter "sshd"
     cat /var/log/system.lg | grep sshd
-    
+
     # 맥 버전 보기
     sysctl kern.version
     sysctl kern.ostype
@@ -75,11 +92,11 @@
   - Go to End or First : `CMD + Arrow (<- or ->)
   - Go to End of Right : `CTRL + E`
   - 줄 복사하기(Duplicate Line) 사용자 단축기 생성
-    1. Open : `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`  
-    2. `Add Customized (Dictonary) -> (Add) Duplicate Current Line (String)`  
-    3. `selectLine:, copy:, moveToBeginningOfLine:, paste:, moveToEndOfLine:`  
+    1. Open : `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`
+    2. `Add Customized (Dictonary) -> (Add) Duplicate Current Line (String)`
+    3. `selectLine:, copy:, moveToBeginningOfLine:, paste:, moveToEndOfLine:`
 
-( IDETextKeyBindingSet.plist e.g.)  
+( IDETextKeyBindingSet.plist e.g.)
 
 ```xml
     <key>Insert Line Below</key>
@@ -99,7 +116,7 @@
 3. /Library/LaunchAgents/`com.microsoft.autoupdate.helper.plist`
 4. /Library/PrivilegedHelperTools/`com.microsoft.autoupdate.helper.plist`
 
-## Change Sudo Timeout 
+## Change Sudo Timeout
 
 ```base
   sudo visudo
@@ -125,7 +142,7 @@ $ sudo apt-get install sshpass
 $ sshpass -p your_password ssh user@hostname
 ```
 
-## ssh copy 
+## ssh copy
 
 ```bash
   # scp remote local or scp local remote
@@ -138,4 +155,8 @@ $ sshpass -p your_password ssh user@hostname
   $ ifconfig en0
   $ ipconfig getiflist
   $ ifconfig | grep "inet "
+```
+
+```bash
+  $ ps auxwww | grep sshd:
 ```
