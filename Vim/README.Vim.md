@@ -120,9 +120,7 @@
     U - 최근 수정한 줄 복원(실행취소)
     Ctrl + r - 다시실행
     . - 최근 명령어 반복
-
     x -
-    jdsklf sjdflks  "sdfjklsd" sdjlk
 
 ## 선택 모드 (비주얼 모드)
 
@@ -131,20 +129,23 @@
     o - 선택 영역 반대쪽 끝으로 점프
 
     * Ctrl + v - 비주얼 블록 : up/down -> `Shift + i` -> type the text -> Esc
-
-    O - 블록의 반대쪽 모서리로 이동
+    * Shift + Alt + Up/Down Arrow
+    O - 블록의 반대쪽 모서리로 이동, 시작 커서 현재 커서 토글.
     aw - 단어 선택
     ab - 소괄호() 구간 선택
     aB - 중괄호{} 구간 선택
     at - 태그<> 구간 선택
-    <Test Test Text>
     ib - 소괄호() 내부 선택
     iB - 중괄호{} 내부 선택
     it - 태그<> 내부 선택
     Esc or Ctrl + c - 선택 모드 종료
     Tip b 또는 B 대신에 ( 또는 { 사용가능.
+    gv - 이전 블록 재 선택
+
+    - hello("Hi everyone fine!") {fine Thanks} < tags > hhh
 
 ## 선택 모드 명령
+    >
     > - 선택 행 들여쓰기
     < - 선택 행 내어쓰기
     y - 선택 구간 복사
@@ -154,6 +155,13 @@
     U - 선택 구간 대문자 전환
 
 ## 레지스터
+
+    - 레지스터는 [쌍따옴표(") + 문자] 로 지정
+    - 레지스터 이름을 받을 수 잇는 명령어
+      - 일반적인 삭제(d, D, x, X)
+      - 교체 (s, S)
+      - 복사 (y)
+    - 운영체제와 공유 : "+ or "*
 
     :reg[isters] - 레지스터 내용 확인
     "xy - 레지스터 x 복사
@@ -195,6 +203,7 @@
     Tip 마킹한 곳으로 점프 시 그레이브 액센트 (`) 또는 아포스트로피 (') 모두 사용가능합니다. 아포스트로피 사용 시, 마킹한 곳의 줄 머리로 이동합니다. (공백 미포함)
 
 ## 매크로
+
     q - 매크로 기록 중지
     @a - 매크로 a 실행
     @@ - 최근 매크로 재실행
@@ -333,3 +342,89 @@
 - `di{`
 - d + {Motion} - Motion (h,i,k,l)
 - dj - 현 커부 아 줄을 삭제
+
+## Playground
+
+```javascript
+const animals = ['pigs', 'goats', 'sheep' ];
+const obj = { 1: 'one', 2: 'two', 3:'three' };
+const count = animals.push('cows');
+// expected output: 4
+console.log(count) // 주석까지 삭제 하기. dt/
+// Remove Right OfRAll
+animals.push('chickens', 'cats', 'dogs');
+console.log(animals);
+
+```
+
+// expected output: 4
+Y (yank, pull) : 현재 라인을 복사
+yy
+p (put) : 복사한 내용을 붙여넣기
+P
+
+## 운영체제 클립보드에서 Vim으로 붙여넣기
+
+- Normal Mode 에서 `"*p` 를 순차적으로 입력하면 클립보드의 내용이 커서 다음에 붙여넣어진다.
+- Normal Mode 에서 `"*P` 를 순차적으로 입력하면 클립보드의 내용이 커서 이전에 붙여넣어진다.
+- Insert Mode 에서 ctrl + r 을 입력 후 "* 를 순차적으로 입력하면 클립보드의 내용이 커서를 기점으로 붙여넣어진다.
+- 레지스터를 지정하는 방법이 쌍따옴표(")와 레지스터 이름을 나타내는 문자를 연결시키는 것이었다. 위 명령들에서 "* 는 클립보드를 지시하는 레지스터다.
+- 마찬가지로 레지스터명으로 "+ 을 입력해도 동일한 결과를 볼 수 있다.
+
+## Vim 에서 운영체제 클립도드로 복사하기
+
+- `*y{모션}` 명령 또는 `"*Y` 명령을 활용하여 클립보드로 원하는 내용을 복사한다.
+- y 대신 삭제 관련 명령을 활용하여 지워진 내용이 클립보드에 복사되도록 할 수도 있다
+
+## 모션으로 활용가능한 기본 커서 이동 명령
+
+- h, j, k, l
+- w, W, b, B, e, E
+- gg, G
+- 0, ^, $
+
+## 워드단위 모션
+
+- iw, iW, ip, ie
+- aw, aW, ap, ae
+
+- s
+- S
+- C
+// Some Code
+// Some Code
+// Some Code
+// NiceThanks Code
+// NiceThanks Code
+// NiceThanks Code
+// NiceThanks Code
+// NiceThanks Code
+// NiceThanks Code
+// Some Code
+// Some Code
+// Some Code
+// Some Code
+// Some Code
+
+## Replace Term
+
+`:%s/origin/replace/g`
+
+## Within Specific Lines
+
+`:start_line_number, end_line_number s/search_term/replace_term/g`
+
+`yy -> jj -> 5p`
+
+`5dd`
+
+"show me the money please"
+
+-> 5fe # 5번째 e
+int a = 123
+`Ctrl + x`
+
+- Undo : `u`
+- Redo : `Ctrl + r`
+
+Hello, World Good Morning Fine Hi Temp
