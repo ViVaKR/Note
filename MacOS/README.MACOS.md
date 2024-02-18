@@ -51,6 +51,9 @@
     sysctl kern.osrelease
     sysctl kern.osrevision
     sysctl kern.osrevision
+
+    # SHA Check Sum
+    >- shasum -a 256 /path/to/file
 ```
 
 ## mac port
