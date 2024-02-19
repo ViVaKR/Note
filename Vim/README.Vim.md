@@ -25,6 +25,7 @@
     :set nu - view number
     :set nonu - hide number
     :set ignore - case insensitive
+    :e [new fileName]
 
 ## 커서이동
 
@@ -420,11 +421,17 @@ P
 
 "show me the money please"
 
--> 5fe # 5번째 e
-int a = 123
+- 5번째 e> `5fe`
+
 `Ctrl + x`
 
 - Undo : `u`
 - Redo : `Ctrl + r`
 
 Hello, World Good Morning Fine Hi Temp
+
+## Move entire line up and down
+
+>- `ddkp`
+>- `:m line-number`
+>- `:m +2` or `:m -3`

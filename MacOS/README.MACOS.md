@@ -71,30 +71,30 @@
 ## 맥 단축키
 
 - 파인더
-  - 숨김파일 보기 : `SHIFT` + `CMD` + `.`(>)
+    - 숨김파일 보기 : `SHIFT` + `CMD` + `.`(>)
 
 - 터미널
-  - 지우기 : `CTR: + L`
-  - 커서 라인 처음으로 이동 : `CTRL + A`
-  - 커서 라인 뒤로 이동 : `CTRL + E`
-  - 현재 라인 지우기 : `CTRL + U`
-  - 직전 단어 지우기 : `CTRL + W`
-  - 라인 취소 새로운 프롬프트 : `CTRL + C`
+    - 지우기 : `CTR: + L`
+    - 커서 라인 처음으로 이동 : `CTRL + A`
+    - 커서 라인 뒤로 이동 : `CTRL + E`
+    - 현재 라인 지우기 : `CTRL + U`
+    - 직전 단어 지우기 : `CTRL + W`
+    - 라인 취소 새로운 프롬프트 : `CTRL + C`
 
 - 이모티콘 : `CTRL + CMD + SPACE`
 
 - XCode ShortCut
-  - ShortCut : `CMD + ,`
-  - Balance Indentation, Code Formatting : `CTRL + I`
-  - Code Complete : `CTRL + SPACE`
-  - Moving Lines : `ALT + CMD + [  or  ]`
-  - Delete Entire Line : `CMD + D`
-  - Comment Current Line / Block : `CMD + /`
-  - Jump to Definition : `CTRL + CMD +J`
-  - Jump to Line : `CMD + L`
-  - Go to End or First : `CMD + Arrow (<- or ->)
-  - Go to End of Right : `CTRL + E`
-  - 줄 복사하기(Duplicate Line) 사용자 단축기 생성
+    - ShortCut : `CMD + ,`
+    - Balance Indentation, Code Formatting : `CTRL + I`
+    - Code Complete : `CTRL + SPACE`
+    - Moving Lines : `ALT + CMD + [  or  ]`
+    - Delete Entire Line : `CMD + D`
+    - Comment Current Line / Block : `CMD + /`
+    - Jump to Definition : `CTRL + CMD +J`
+    - Jump to Line : `CMD + L`
+    - Go to End or First : `CMD + Arrow (<- or ->)
+    - Go to End of Right : `CTRL + E`
+    - 줄 복사하기(Duplicate Line) 사용자 단축기 생성
     1. Open : `/Applications/Xcode.app/Contents/Frameworks/IDEKit.framework/Versions/A/Resources/IDETextKeyBindingSet.plist`
     2. `Add Customized (Dictonary) -> (Add) Duplicate Current Line (String)`
     3. `selectLine:, copy:, moveToBeginningOfLine:, paste:, moveToEndOfLine:`
@@ -107,6 +107,7 @@
     <key>Insert Line Above</key>
     <string>moveUp:, moveToEndOfLine:, insertNewline:</string>
 ```
+
     4. Restart XCode : CMD + , -> Search `Duplicate` -> Asign -> `CTRL + SHIFT + L`
 
 ### 마이크로소프트 오피스 자동 업데이트 비활성화 항목
@@ -125,11 +126,11 @@
   sudo visudo
 ```
 
-* (10 minute password caching)
-  * `Defaults timestamp_timeout=10`
+- (10 minute password caching)
+    - `Defaults timestamp_timeout=10`
 
-* No password caching
-  * `Defaults timestamp_timeout=0`
+- No password caching
+    - `Defaults timestamp_timeout=0`
 
 ---
 
@@ -155,11 +156,11 @@ $ sshpass -p your_password ssh user@hostname
 ## Find IP Address
 
 ```bash
-  $ ifconfig en0
-  $ ipconfig getiflist
-  $ ifconfig | grep "inet "
+  ifconfig en0
+  ipconfig getiflist
+  ifconfig | grep "inet "
 ```
 
 ```bash
-  $ ps auxwww | grep sshd:
+  ps auxwww | grep sshd:
 ```
