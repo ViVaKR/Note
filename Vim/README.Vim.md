@@ -126,7 +126,7 @@
 ## 선택 모드 (비주얼 모드)
 
     v - 비주얼 모드
-    V - 비주얼 라인
+    shift + v - 비주얼 라인
     o - 선택 영역 반대쪽 끝으로 점프
 
     * Ctrl + v - 비주얼 블록 : up/down -> `Shift + i` -> type the text -> Esc
@@ -143,10 +143,8 @@
     Tip b 또는 B 대신에 ( 또는 { 사용가능.
     gv - 이전 블록 재 선택
 
-    - hello("Hi everyone fine!") {fine Thanks} < tags > hhh
-
 ## 선택 모드 명령
-    >
+
     > - 선택 행 들여쓰기
     < - 선택 행 내어쓰기
     y - 선택 구간 복사
@@ -158,7 +156,7 @@
 ## 레지스터
 
     - 레지스터는 [쌍따옴표(") + 문자] 로 지정
-    - 레지스터 이름을 받을 수 잇는 명령어
+    - 레지스터 이름을 받을 수 있는 명령어
       - 일반적인 삭제(d, D, x, X)
       - 교체 (s, S)
       - 복사 (y)
@@ -224,14 +222,9 @@
     diw - 한 단어 잘라내기
     daw - 한 단어 잘라내기 (공백포함)
     :3,5d - 3행 부터 5행 까지 삭제
-
-### Tip 특정 범위를 지정하기 위해 다음과 같은 문자들을 사용할 수 있습니다
-
-    e.g.
     :.,$d - 현재 행 부터 끝까지
     :.,1d - 현재 행 부터 처음까지
     :10,$d - 10 번째 행 부터 처음까지
-
     :g/{pattern}/d - 패턴을 포함하는 모든 행 삭제
     :g!/{pattern}/d - 패턴을 포함하지 않는 모든 행 삭제
     d$ or D - 한 행 끝까지 잘라내기
@@ -435,3 +428,23 @@ Hello, World Good Morning Fine Hi Temp
 >- `ddkp`
 >- `:m line-number`
 >- `:m +2` or `:m -3`
+
+## map : recursive map
+
+## noremap : non-recursive map
+
+## <leader> :=> is same `\`
+
+## Macro
+
+>- a ~ z 키에 기록 시작 -> `q + a`
+>- `Actions`
+>- 기록 중지 -> `q`
+>- `@a`
+>- 직전 매크로 실행 -> `@@`
+>- 매크로 반복실행 -> `10@a`
+
+
+##
+
+// Hello World Thu

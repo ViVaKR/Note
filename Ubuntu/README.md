@@ -34,6 +34,30 @@
     >- dpkg --list
     >- dpkg --purge [program name]
 
+    # install utilities
+    $ sudo apt-get install -y bsdmainutils
+    1. cal : -n, -b, >, >>, -
+    2. tac
+    3. tee : >> or > 대신 사용할 수 있음.
+        -> cat a1 | tee a2
+        -> dpkg --list | tee a3 # 화면출력 + 파일 저장
+        -> who | tee -a a4
+    4. nl (number line) : == cat -b a1
+        -> nl a1
+        -> nl -w10 a1
+        -> nl -i2 iw2 a1 # 2씩 증가
+        -> nl -i10 -v10 a1 # 시작 번호 지정
+        -> nl -i2 -v0 a1 # 짝수로 증가
+
+    5. uptime
+    6. dpkg --list
+    7.
+
+    # histroy
+    -> ~/.zsh_history
+    -> echo $HISTFILE
+
+    # .NET
     >- dotnet --info
     >- dotnet --list-sdks
     >- dotnet --list-runtimes
