@@ -394,3 +394,23 @@
 ```bash
     :set enc? fenc? tenc?
 ```
+
+## Vim Cursor Settings
+
+```bash
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
+# options
+
+Ps = 0  -> blinking block.
+Ps = 1  -> blinking block (default).
+Ps = 2  -> steady block.
+Ps = 3  -> blinking underline.
+Ps = 4  -> steady underline.
+Ps = 5  -> blinking bar (xterm).
+Ps = 6  -> steady bar (xterm).
+
+```
+
+- echo -e -n "\x1b[\x35 q" # changes to blinking bar
