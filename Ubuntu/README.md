@@ -36,12 +36,13 @@
 
     # install utilities
     $ sudo apt-get install -y bsdmainutils
+
     1. cal : -n, -b, >, >>, -
     2. tac
     3. tee : >> or > 대신 사용할 수 있음.
         -> cat a1 | tee a2
         -> dpkg --list | tee a3 # 화면출력 + 파일 저장
-        -> who | tee -a a4
+        -> who | tee -a a4 # append
     4. nl (number line) : == cat -b a1
         -> nl a1
         -> nl -w10 a1
@@ -51,7 +52,48 @@
 
     5. uptime
     6. dpkg --list
-    7.
+    7. apt autoremove
+    8. head : 플러스 기호가 생략되어 있고 기본 10개
+        -> head -n 10 number # default count 10
+        -> head -n 5 number city # number 5, city 5 개
+        -> head -n -3 number city -q # 끝에서 부터 3개 잘라내고 출력, 해더 없애고 출력
+        -> head -c 30 number
+
+    9. tail : 마이너스 기호가 생략되어 있고 기본 10개, 추적 기능이 있음.
+        -> tail -n 5 number
+        -> tail -n +5 number # 앞에서 부터 5개 잘라내고 출력, 5부터 끝까지.
+        -> tail -c 30 number # byte 단위로 출력
+        -> tail -f number # 추적 기능이 있음 tail 고유 기능
+
+    10. seq
+            -> seq 100 100 1500 > number
+    11. wc -l fileName # line count
+    12. split
+        -> split --help
+        -> split fileName # 1000 라인당 분리
+        -> wc -l xa* # 각각의 파일 행 확인하기
+        -> cat xa* > fileName2 # 합치기
+        -> diff k k2 # 파일 동일성 여부 확인하기
+        -> split -d -a 3 fileName # 숫자로 명명, 이름 크기칸수
+        -> split -d --additional-suffix=.txt fileName
+        -> split -d --additional-suffix=.txt fileName backup_ # 접두사 변경
+        -> split -d --additional-suffix=.txt -l 500 n backup_ # 500 라인 단위
+        -> split -d --additional-suffix=.txt -C 10240 n backup_ # byte 단위,  10K
+        -> split -d --additional-suffix=.txt -n 10 n backup_ # 갯수로 자르기, 같은 크기로 10개로 자름
+        -> split -d --additional-suffix=.bak -n 10 --numeric-suffix=50 n backup_ # 시작 번호 지정 50부터
+        -> cat backup_* > orgin.bak # 합치기..
+
+    13. csplit
+        ->
+
+    14. wc
+        ->
+    14. diff
+        -> diff a b
+
+
+
+
 
     # histroy
     -> ~/.zsh_history
