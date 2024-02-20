@@ -1,8 +1,8 @@
 # Ubuntu
 
-## 기본 명령어
+## Shell ZSH
 
-```bash
+```zsh
 
     # Shutdown
     >- shutdown -r now
@@ -68,6 +68,7 @@
     10. seq
             -> seq 100 100 1500 > number
     11. wc -l fileName # line count
+
     12. split
         -> split --help
         -> split fileName # 1000 라인당 분리
@@ -84,16 +85,67 @@
         -> cat backup_* > orgin.bak # 합치기..
 
     13. csplit
-        ->
+        -> cp /etc/passwd
+        -> csplit k 10 20 30 40 # each lines split
+        -> csplit p /pattern/
+        -> csplit p /pattern/
+        -> csplit p /pattern/1 # 패턴 단어가 앞쪽에 포함됨, 숫자 만큼 앞쪽/뒤쪽(음수) 에 포함됨
+        -> csplit -f x_ p # change prefix
+        -> csplit -f aa_ ch.txt "/Chapter/2" "{*}" # multi split
 
-    14. wc
-        ->
-    14. diff
+    14. w
+        -> wc -c file # byte
+        -> wc -l file # line
+        -> wc -w file # word
+        -> wc file # line, word, byte 순
+
+    15. diff : file compare
         -> diff a b
 
+    16. du
+        -> du -sh ./folder
+
+    17. grep
+        -> grep keyWord /etc/passwd | nl # .zshrc -> alias grep="grep --color=always"
+
+    18. echo : built in command, display a line of textq
+        -> echo $a $b $c
+        -> echo -e "aa \t bb \n cc" # 제어 특수문자 인식
+        -> echo -e "\uAC00" # unicode (2byte) -> '가', \u2665, \u2661, \u2664"
+        -> man echo
+        -> run-help # bultin commands list
+        -> run-help echo
+
+    19. env : 환경변수
+
+    20. printf
+        -> printf "%d\t%f\t%s\n" 100 3.14 'A' # imadate value
+        -> printf "%d\t%f\t%s\n" $a $b $c # variable
+        -> printf "[%10d]\n" 100
+        -> man printf # help,== man 1 printf
+        -> man 3 printf # Library Functions Manual
+
+    21. yes : 무한 루프
+        -> yes "Hello World" | nl # 인터럽트 - Ctrl + C 중지
+
+    22. ls, dir, vdir, dircolors
+        -> a   all
+        -> A    . .. 제외 하고 all
+        -> l    자세한 정보
+        -> i    inode
+        -> R    recursive
+        -> S    size
+        -> r    reverse
+        -> t    time
+        -> Access : 접근
+        -> Modify : 수정
+        -> Change : 속성
+
+        |file or dir | 권한 | 하드링크수 | 소유주 | 소유 그릅 | 파일사이즈 | 파일접근날짜 |
 
 
 
+---
 
     # histroy
     -> ~/.zsh_history
@@ -224,3 +276,12 @@
     $ sudo iptables -I INPUT -p tcp --dport 1022 -j ACCEPT
     $ sudo do-release-upgrade
 ```
+
+## 최신 Vim 설치
+
+sudo apt update
+sudo apt install -y eza
+
+## ubuntu cal install
+
+sudo apt-get install -y bsdmainutils

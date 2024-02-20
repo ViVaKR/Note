@@ -48,13 +48,10 @@
     gE - 이전 단어 끝으로 점프 (특수문자 포함)
     % - 현재 괄호의 짝으로 점프 (:h matchpairs를 통해 더 많은 정보를 얻을 수 있습니다.)
     0 - 현재 행 시작으로 점프 (공백 포함)
-
     ^ - 현재 행 시작으로 점프
     $ - 현재 행 끝으로 점프 (공백 포함)
-
     gg - 문서 첫 줄 시작으로 점프
     G - 문서 끝 줄 시작으로 점프
-
     5gg or 5G - 5번째 행 시작으로 점프
     gd - 지역변수 선언위치로 점프
     gD - 전역변수 선언위치로 점프
@@ -66,11 +63,9 @@
     , - 최근 F/T/f/t 명령어 실행
     } - 다음 단락으로 점프
     { - 이전 단락으로 점프
-
     zz - 화면 위치 중간으로 조정
     zt - 화면 맨 위로 커서 이동
     zb - 화면 맨 아래로 커서 이동
-
     Ctrl + e - 한 줄 아래로 화면 조정
     Ctrl + y - 한 줄 위로 화면 조정
     Ctrl + b - 한 화면 위로 조정
@@ -128,7 +123,6 @@
     v - 비주얼 모드
     shift + v - 비주얼 라인
     o - 선택 영역 반대쪽 끝으로 점프
-
     * Ctrl + v - 비주얼 블록 : up/down -> `Shift + i` -> type the text -> Esc
     * Shift + Alt + Up/Down Arrow
     O - 블록의 반대쪽 모서리로 이동, 시작 커서 현재 커서 토글.
@@ -161,7 +155,6 @@
       - 교체 (s, S)
       - 복사 (y)
     - 운영체제와 공유 : "+ or "*
-
     :reg[isters] - 레지스터 내용 확인
     "xy - 레지스터 x 복사
     "xp - 레지스터 x 붙여넣기
@@ -331,31 +324,11 @@
     :dif[fupdate] - 비교모드 새로고침
     :diffo[ff] - 현재 창 비교모드 닫기
 
-- `di"` = delete inside quote "sdjklfsjdkfsdl", []
+- `di"` = delete inside quote
 - `di[`
 - `di{`
 - d + {Motion} - Motion (h,i,k,l)
 - dj - 현 커부 아 줄을 삭제
-
-## Playground
-
-```javascript
-const animals = ['pigs', 'goats', 'sheep' ];
-const obj = { 1: 'one', 2: 'two', 3:'three' };
-const count = animals.push('cows');
-// expected output: 4
-console.log(count) // 주석까지 삭제 하기. dt/
-// Remove Right OfRAll
-animals.push('chickens', 'cats', 'dogs');
-console.log(animals);
-
-```
-
-// expected output: 4
-Y (yank, pull) : 현재 라인을 복사
-yy
-p (put) : 복사한 내용을 붙여넣기
-P
 
 ## 운영체제 클립보드에서 Vim으로 붙여넣기
 
@@ -381,47 +354,19 @@ P
 
 - iw, iW, ip, ie
 - aw, aW, ap, ae
-
 - s
 - S
 - C
-// Some Code
-// Some Code
-// Some Code
-// NiceThanks Code
-// NiceThanks Code
-// NiceThanks Code
-// NiceThanks Code
-// NiceThanks Code
-// NiceThanks Code
-// Some Code
-// Some Code
-// Some Code
-// Some Code
-// Some Code
 
-## Replace Term
-
-`:%s/origin/replace/g`
+## Replace Term $\rightarrow\,$`:%s/origin/replace/g`
 
 ## Within Specific Lines
 
 `:start_line_number, end_line_number s/search_term/replace_term/g`
 
-`yy -> jj -> 5p`
-
-`5dd`
-
-"show me the money please"
-
-- 5번째 e> `5fe`
-
-`Ctrl + x`
-
+- 5번째 e $\rightarrow\,$ `5fe`
 - Undo : `u`
 - Redo : `Ctrl + r`
-
-Hello, World Good Morning Fine Hi Temp
 
 ## Move entire line up and down
 
@@ -444,7 +389,8 @@ Hello, World Good Morning Fine Hi Temp
 >- 직전 매크로 실행 -> `@@`
 >- 매크로 반복실행 -> `10@a`
 
+## Get Encodings
 
-##
-
-// Hello World Thu
+```bash
+    :set enc? fenc? tenc?
+```

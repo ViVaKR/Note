@@ -164,3 +164,123 @@ $ sshpass -p your_password ssh user@hostname
 ```bash
   ps auxwww | grep sshd:
 ```
+
+## lldb debug
+
+-> clang++ -g -std=c++17 demo.cpp -o prog
+-> lldb ./prog
+-> (lldb) run # error stop
+-> (lldb) target create prog # re-launch
+
+# break points
+-> (lldb) b hi.cpp : 4
+-> (lldb) b square(int)
+-> (lldb) b Demo::demo()
+-> (lldb) b LLDBDemo::add(int, int)
+b main
+br s -n main
+b test.c:12
+breakpoint set --method main
+br s -M main
+lldb ./a.out
+
+# break point #
+- On a function
+- On a class method
+- Inside a namespace
+
+(lldb) b list
+(lldb) br del 4
+(lldb) br del
+
+-> (lldb) list 10 # view source line number
+
+# Step Into
+-> (lldb) si # 지시 수준 신호 단계.
+-> (lldb) s # 소스 레벨 신호 단계.
+
+# back trace
+-> (lldb) bt # 어떻게 해당 라인에 도달하였는지 알려줌
+
+# Continue
+-> (lldb) c
+
+# Next
+-> (lldb) n # next step
+
+# Re Launch
+-> (lldb) target create prog
+
+-> (lldb) run
+# GUI
+-> (lldb) gui # after break point and run
+-->  n or s key movement
+--> tab key and space -> view variable
+
+# Stepping Around
+Step Over
+(lldb) next
+(lldb) n
+(lldb) ni
+
+Step Into
+(lldb) step
+(lldb) s
+
+## Step
+
+- Step into : 호출 되는 함수까지 포함 하여 한줄 한줄 실행
+	만약 현재 코드라인이 함수라면, 해당 함수 내부로 진입한 이후
+	한 줄씩 실행함
+	즉, 함수 내부로 진입함
+
+- Step over : 함수 단위로 코드를 실행
+	현재 코드라인을 실행하고 다음 라인으로 이동 하되
+	만약 현재 코드라인이 함수라면, 해당 함수를 실행은 하되
+	디버거는 함수 안에서 먼추지 않는다.
+	즉, 함수는 실행하면서 지나감
+	특정 함수가 잘 동작하는지만을 확인할 때 사용함
+
+- Step out : 함수에서 나감.
+	만약 현재 코드라인이 함수 안이라면, 해당 함수는 끝까지 실행하고 반환하고 멈춤
+	함수 안에서 한 줄 한 줄 디버깅하면서 더이상 오류가 없어 함수 실행을 멈출때
+
+
+
+s : step into
+si : thread step-inst
+n : next, thread step-over
+ni : thread step-inst-over
+finish
+r
+
+(lldb) c
+
+thread backtrace
+bt
+
+register read
+register write rax 123
+
+clang++ -O3 hi.cpp -o hi
+
+`cmake -DCMAKE_BUILD_TYPE=Debug`
+
+lldb a.out
+lldb -- a.out argument1
+
+## Running
+
+```bash
+
+(lldb) run
+(lldb) r
+
+(lldb) break set -f hi.cpp -l #
+(lldb) br s -f hi.cpp -l #
+(lldb) b hi.cpp :
+
+```
+
+- Call Stack : 현재 상태 까지 거쳐온 함수를 역순으로 표시해중
+- Watch : 특정 변수나 객체의 값을 등록해 놓고 변화되는 값을 관찰할 수 있음.
