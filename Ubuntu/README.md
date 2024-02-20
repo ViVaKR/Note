@@ -129,31 +129,37 @@
         -> yes "Hello World" | nl # 인터럽트 - Ctrl + C 중지
 
     22. ls, dir, vdir, dircolors
-        -> a   all
-        -> A    . .. 제외 하고 all
-        -> l    자세한 정보
-        -> i    inode
-        -> h	human-readable
-        -> F	one of */=>@|
-        -> R    recursive
-        -> S    size
-        -> r    reverse
-        -> t    time
-        -> Access : 접근시간
-        -> Modify : 수정
-        -> Change : 속성
+        -a  all
+        -A  . .. 제외 하고 all
+        -l  자세한 정보
+        -i  inode
+        -h	human-readable
+        -F	one of */=>@|
+        -R  recursive
+        -S  size
+        -r reverse
+		-t : modification time
+		-u : access time
+		-c : change time
 
         |file or dir | 권한 | 하드링크수 | 소유주 | 소유 그릅 | 파일사이즈 | 파일접근날짜 | 파일 |
+		
+		-> find / -type s -exec ls -alF {} \; 2> /dev/null # hide error messages 
+		-> find / -type s -S ls -alF {} \; 2> /dev/null # hide error messages 
 
-        -> find / -type s -exec ls -al {} \; 2> /dev/null # hide error messages
 
----
-
-    # histroy
+	22. vdir, dir
+	23. remove alias (원본 명령어 실행) : `\command` -> \ls
+	24. alias : view alias
+	25. dircolors : view colors
+		-> dircolors --help
+		-> Hello
+    26. histroy
     -> ~/.zsh_history
     -> echo $HISTFILE
 
-    # .NET
+	
+    # .NET SDK Install
     >- dotnet --info
     >- dotnet --list-sdks
     >- dotnet --list-runtimes
@@ -162,6 +168,7 @@
     >- wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
     >- chmod +x ./dotnet-install.sh
     >- ./dotnet-install.sh --version latest
+
 
 ```
 
@@ -280,9 +287,9 @@
 
 ## 최신 Vim 설치
 
-    >- sudo apt update
-    >- sudo apt install -y eza
+sudo apt update
+sudo apt install -y eza
 
 ## ubuntu cal install
 
-    >- sudo apt-get install -y bsdmainutils
+sudo apt-get install -y bsdmainutils
