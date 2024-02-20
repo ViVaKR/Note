@@ -143,8 +143,6 @@
 
         |file or dir | 권한 | 하드링크수 | 소유주 | 소유 그릅 | 파일사이즈 | 파일접근날짜 |
 
-
-
 ---
 
     # histroy
@@ -160,7 +158,6 @@
     >- wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
     >- chmod +x ./dotnet-install.sh
     >- ./dotnet-install.sh --version latest
-
 
 ```
 
@@ -279,9 +276,9 @@
 
 ## 최신 Vim 설치
 
-sudo apt update
-sudo apt install -y eza
+    >- sudo apt update
+    >- sudo apt install -y eza
 
 ## ubuntu cal install
 
-sudo apt-get install -y bsdmainutils
+    >- sudo apt-get install -y bsdmainutils
