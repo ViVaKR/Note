@@ -338,7 +338,7 @@
 ## 운영체제 클립보드에서 Vim으로 붙여넣기
 
 - Normal Mode 에서 `"*p` 를 순차적으로 입력하면 클립보드의 내용이 커서 다음에 붙여넣어진다.
-- Normal Mode 에서 `"*P` 를 순차적으로 입력하면 클립보드의 내용이 커서 이전에 붙여넣어진다.
+- Normal Mode 에서 `"+P` 를 순차적으로 입력하면 클립보드의 내용이 커서 이전에 붙여넣어진다.
 - Insert Mode 에서 ctrl + r 을 입력 후 "* 를 순차적으로 입력하면 클립보드의 내용이 커서를 기점으로 붙여넣어진다.
 - 레지스터를 지정하는 방법이 쌍따옴표(")와 레지스터 이름을 나타내는 문자를 연결시키는 것이었다. 위 명령들에서 "* 는 클립보드를 지시하는 레지스터다.
 - 마찬가지로 레지스터명으로 "+ 을 입력해도 동일한 결과를 볼 수 있다.
@@ -406,7 +406,7 @@
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-# options
+## options
 
 Ps = 0  -> blinking block.
 Ps = 1  -> blinking block (default).
@@ -418,4 +418,55 @@ Ps = 6  -> steady bar (xterm).
 
 ```
 
-- echo -e -n "\x1b[\x35 q" # changes to blinking bar
+## `|` 형태의 커서
+
+    >- `echo -e -n "\x1b[\x35 q" # changes to blinking bar`
+
+## 바꾸기 : 콜론 모드에서 's'ubstitue 명을 사용 $\rightarrow$ `:%s`
+
+- `:시작줄, 끝줄 s /찾을패턴/바꿀문자/옵션`
+    >- g : global - 한줄에 패턴이 여러번 나오면 모두 바꿈
+    >- i : ignore case - 대소문자르 구분을 하지 않음
+    >- c : confirm - 물어봄
+
+## 정규 표현식 요약
+
+    >- .        : 임의의 한글자
+    >- [list]   : list 중의 한글자
+        -> [adf] => a, b, f
+        -> [a-f] => a, b, c, d, e, f
+        -> [^adf] => ecept a, d, f
+        -> [^a-f]
+        -> [ab^] => a, b, ^
+    >- *        : >= 0  , a* => null, a, , aaa, aaaa....
+    >- +        : > 0   , a+ => a, , aaa, aaaa....
+    >- |        : a | b , a or b
+    >- ?        : ab? => a or ab
+    >- {n, m}   : n >= 0 and  < m
+    >- {n}      : repeat => n
+    >- {,m}     : <= m
+    >- {}       : >=0 , is same *
+    >- {-n, m}
+    >- {-n}
+    >- {-n, }
+    >- {-,m}
+    >- {-}
+
+abcdebcdebcde
+<b><i>Hello</i></b>
+
+## 라인 복사 후 Ctrl + A : 일련번호 증가 시키기
+
+    >- yy3pE(c-v)2jg(c-a)
+
+    >- Ctrl + u   --> Move half a screen up
+    >- Ctrl + d   --> Move half a screen down
+    >- Ctrl + b   --> Mojve one full screen up
+    >- Ctrl + f   --> Move one full screen down
+
+    >- zo          --> Open a fold
+    >- zc          --> Close a fold
+    >- zr          --> Reduce folding level throughout the file
+    >- zm          --> Increase folding level throughout the file
+
+    >- `gcc` -> comment
