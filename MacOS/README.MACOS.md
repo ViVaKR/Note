@@ -172,19 +172,23 @@ $ sshpass -p your_password ssh user@hostname
 -> (lldb) run # error stop
 -> (lldb) target create prog # re-launch
 
-# break points
+## break points
+
 -> (lldb) b hi.cpp : 4
 -> (lldb) b square(int)
 -> (lldb) b Demo::demo()
 -> (lldb) b LLDBDemo::add(int, int)
 b main
 br s -n main
+br s -f helloworld.cpp -l 23
 b test.c:12
+b helloworld.cpp:29
 breakpoint set --method main
 br s -M main
 lldb ./a.out
 
-# break point #
+## break point
+
 - On a function
 - On a class method
 - Inside a namespace
@@ -195,33 +199,40 @@ lldb ./a.out
 
 -> (lldb) list 10 # view source line number
 
-# Step Into
+## Step Into
+
 -> (lldb) si # 지시 수준 신호 단계.
 -> (lldb) s # 소스 레벨 신호 단계.
 
-# back trace
+## back trace
+
 -> (lldb) bt # 어떻게 해당 라인에 도달하였는지 알려줌
 
-# Continue
+## Continue
+
 -> (lldb) c
 
-# Next
+## Next
+
 -> (lldb) n # next step
 
-# Re Launch
+## Re Launch
+
 -> (lldb) target create prog
 
 -> (lldb) run
-# GUI
+
+## GUI
+
 -> (lldb) gui # after break point and run
 -->  n or s key movement
 --> tab key and space -> view variable
 
-# Stepping Around
+## Stepping Around
+
 Step Over
 (lldb) next
 (lldb) n
-(lldb) ni
 
 Step Into
 (lldb) step
@@ -244,8 +255,6 @@ Step Into
 - Step out : 함수에서 나감.
 	만약 현재 코드라인이 함수 안이라면, 해당 함수는 끝까지 실행하고 반환하고 멈춤
 	함수 안에서 한 줄 한 줄 디버깅하면서 더이상 오류가 없어 함수 실행을 멈출때
-
-
 
 s : step into
 si : thread step-inst

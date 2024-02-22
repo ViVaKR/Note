@@ -116,7 +116,12 @@
     U - 최근 수정한 줄 복원(실행취소)
     Ctrl + r - 다시실행
     . - 최근 명령어 반복
-    x -
+    x - 한글자 지우기
+    d2w => delets two words
+    dt; => delete until ;
+    d/hello => delete until hello
+    dd => delete line
+    D - delete from cursor until the end of the line
 
 ## 선택 모드 (비주얼 모드)
 

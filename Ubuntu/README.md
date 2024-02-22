@@ -143,10 +143,9 @@
 		-c : change time
 
         |file or dir | 권한 | 하드링크수 | 소유주 | 소유 그릅 | 파일사이즈 | 파일접근날짜 | 파일 |
-		
-		-> find / -type s -exec ls -alF {} \; 2> /dev/null # hide error messages 
-		-> find / -type s -S ls -alF {} \; 2> /dev/null # hide error messages 
 
+		-> find / -type s -exec ls -alF {} \; 2> /dev/null # hide error messages
+		-> find / -type s -S ls -alF {} \; 2> /dev/null # hide error messages
 
 	22. vdir, dir
 	23. remove alias (원본 명령어 실행) : `\command` -> \ls
@@ -157,8 +156,26 @@
     26. histroy
     -> ~/.zsh_history
     -> echo $HISTFILE
+    27. paste
+        -> paste name kor eng
+        -> paste name kor eng -s > sc2
+        -> paste name kor eng -s -d", " > sc2
+        -> paste name -s -d"," > names
+        -> paste name -s -d"|" > names
+        -> paste name -s -d"\t" > names
+    28. join : 공통된 필드를 찾아서 합침
+        -> join k1 e1 # 중복된 항목 단일 항목 처리, 학생들의 과목 1, 과목 2 병합 처리
+        -> join -e"00" -o 0,1.2,2.2 k2 e2 # 공백 부분 00처리
+            >- 이순신 90 95
+            >- 황진이 00 25
+            >- 한석봉 95 95
+            >- 신돌석 50 00
+            >- 양주종 50 50
 
-	
+    29. cut
+
+    30. awk
+
     # .NET SDK Install
     >- dotnet --info
     >- dotnet --list-sdks
