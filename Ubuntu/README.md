@@ -84,8 +84,8 @@
         -> split -d --additional-suffix=.bak -n 10 --numeric-suffix=50 n backup_ # 시작 번호 지정 50부터
         -> cat backup_* > orgin.bak # 합치기..
 
-    13. csplit
-        -> cp /etc/passwd
+    13. csplit : 행으로 자르기
+        -> cp /etc/passwd ps
         -> csplit k 10 20 30 40 # each lines split
         -> csplit p /pattern/
         -> csplit p /pattern/
@@ -163,6 +163,7 @@
         -> paste name -s -d"," > names
         -> paste name -s -d"|" > names
         -> paste name -s -d"\t" > names
+
     28. join : 공통된 필드를 찾아서 합침
         -> join k1 e1 # 중복된 항목 단일 항목 처리, 학생들의 과목 1, 과목 2 병합 처리
         -> join -e"00" -o 0,1.2,2.2 k2 e2 # 공백 부분 00처리
@@ -173,8 +174,25 @@
             >- 양주종 50 50
 
     29. cut
+        -> cat /etc/passwd | cut -d : -f 1,3
 
     30. awk
+        -> ps -ef | awk '{ print $1,$2 }'
+        -> ps -ef | awk '{ print $0 }'
+        -> ps -ef | awk '{print $1, "\t", $3}'
+    31. sort
+        -> b : 선행 공백 무시
+        -> f : 대소문자 구분 안함
+        -> n : 해시의 키값 기준, 랜덤 정렬
+        -> r : 역순 (내림 차순) - sort kor -r | nl
+        -> h : --human(2K, 1G)
+        -> c : 정렬 되어 있는지 검사
+        -> k n: n번째 필드를 기준으로 정렬
+        -> m : 이미  정렬된 파일들을 병합
+        -> 0 : 파일 출력
+        -> t : 필드 구분자를 지정 (기본은 공백)
+        -> u : 정렬 후 중복 제거
+        -> sort kor | nl
 
     # .NET SDK Install
     >- dotnet --info

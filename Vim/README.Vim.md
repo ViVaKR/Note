@@ -66,13 +66,14 @@
     zz - 화면 위치 중간으로 조정
     zt - 화면 맨 위로 커서 이동
     zb - 화면 맨 아래로 커서 이동
-    Ctrl + e - 한 줄 아래로 화면 조정
+    <c-o> - 이전 커서 위치로 이동
+    <c-i> - 새로운 커서 위치로 이동
+    Ctrl + e - 한 줄 아래로 이동
     Ctrl + y - 한 줄 위로 화면 조정
     Ctrl + b - 한 화면 위로 조정
     Ctrl + f - 한 화면 아래로 조정
     Ctrl + d - 반 화면 아래로 조정
     Ctrl + u - 반 화면 위로 조정
-    Tip 이동 명령 앞에 숫자를 붙이면 그 수만큼 반복합니다. 예를 들면, 4j는 4행 아래로 이동합니다.
 
 ## 삽입 모드
 
@@ -107,6 +108,8 @@
     gU - 커서 이동으로 대문자 전환
     cc - 한 행 전체 새로 쓰기
     c$ or C - 한 행 끝까지 새로 쓰기
+
+    yiw - 한 단어 복사하기
     ciw - 한 단어 전체 새로 쓰기
     cw or ce - 한 단어 끝까지 새로 쓰기
     s - 한 문자 새로 쓰기
@@ -125,18 +128,20 @@
 
 ## 선택 모드 (비주얼 모드)
 
+    $ vim --version | langmap
     v - 비주얼 모드
-    shift + v - 비주얼 라인
+    shift + v - 비주얼 라인전체
     o - 선택 영역 반대쪽 끝으로 점프
     * Ctrl + v - 비주얼 블록 : up/down -> `Shift + i` -> type the text -> Esc
     * Shift + Alt + Up/Down Arrow
     O - 블록의 반대쪽 모서리로 이동, 시작 커서 현재 커서 토글.
-    aw - 단어 선택
-    ab - 소괄호() 구간 선택
-    aB - 중괄호{} 구간 선택
-    at - 태그<> 구간 선택
-    ib - 소괄호() 내부 선택
-    iB - 중괄호{} 내부 선택
+    vaw - 단어 선택
+    vab - 소괄호() 구간 선택, 괄호 포함
+        -> int main (int argc, int* argc) {}
+    vaB - 중괄호{} 구간 선택
+    vat - 태그<> 구간 선택
+    vib - 소괄호() 내부 선택
+    viB - 중괄호{} 내부 선택
     it - 태그<> 내부 선택
     Esc or Ctrl + c - 선택 모드 종료
     Tip b 또는 B 대신에 ( 또는 { 사용가능.
@@ -390,9 +395,8 @@
 >- a ~ z 키에 기록 시작 -> `q + a`
 >- `Actions`
 >- 기록 중지 -> `q`
->- `@a`
+>- 실행 (100회) -> `100@a`
 >- 직전 매크로 실행 -> `@@`
->- 매크로 반복실행 -> `10@a`
 
 ## Get Encodings
 
@@ -470,3 +474,82 @@ abcdebcdebcde
     >- zm          --> Increase folding level throughout the file
 
     >- `gcc` -> comment
+
+---
+
+## 도움말 또는 터미널 과 편집기 사이 토글하기
+
+    >- <c-w, w> - between help <-> editor
+
+## Multi Line Edit Same
+
+## GoTo Line Number
+
+    >- <line>
+
+:help v_g_CTRL-A
+
+- "100"
+
+## Increament the number -> `<c-a>`
+
+## Recording (Macro, 일련번호를 98번 증가시키기)
+
+    >- Start -> `qq` // Start the macro in register q
+    >- Duplicate the line -> `yyp`
+    >- Selection Duplicated Number
+    >- Increment the number -> `<c-a>`
+    >- End the recording -> `q`
+    >- Replay 98 times -> `98@q`
+
+## Record the following macro
+
+- [ref](https://vi.stackexchange.com/questions/20038/visual-block-mode-edit-with-sequential-number)
+- Mark a is at origin number line : ma
+- Mark b is at second number line : mb
+
+1. qq
+2. `a
+3. <c-a>
+4. yiw          // Copy the number
+5. `b
+6. i-"
+7. <esc>p
+8. mb
+9. q
+10. 100@q
+
+## Blank Tab
+
+    >- :tabnew
+    >- :tabedit
+    >- :e
+
+## Open a Tab with a file specified.
+
+    >- :tabf filename
+    >- :tabnew filename
+    >- :tabedit filename
+
+## Tabs
+
+    >- gt
+    >- gT
+    >- ngt : N 번째 탭으로 이동
+    >- :tabs
+    >- :tablast
+    >- :tabfirst
+    >- :ls - reopen by buffer
+    >- :tabc :close current Tab
+    >- :ntabc = close Nth Tab
+    >- :tabo - close all tab but current Tab
+    >- :tabnew +nbuf
+    >- :tabm n - Move the current opend Tab to the Nth position (Start from0)
+    >- :saveas new_saved.txt
+    >- :file new_file.txt
+    >- :Explore
+
+## Shell Commands
+
+    >- :!mv smaple.txt file_moved.txt
+    >- :!cp sample.txt file_copied.txt
