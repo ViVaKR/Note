@@ -525,14 +525,11 @@ abcdebcdebcde
     >- :tabedit
     >- :e
 
-## Open a Tab with a file specified.
+## Open a Tab with a file specified
 
     >- :tabf filename
     >- :tabnew filename
     >- :tabedit filename
-
-## Tabs
-
     >- gt
     >- gT
     >- ngt : N 번째 탭으로 이동
@@ -548,6 +545,41 @@ abcdebcdebcde
     >- :saveas new_saved.txt
     >- :file new_file.txt
     >- :Explore
+
+## Split
+
+    >- : vert term # termianl
+    >- : rightb vert term
+    >- : vsp filename.txt # file
+    >- : botright vnew filename.txt
+
+    - 분할
+    >- 상하분할 - ctrl + w, s (:sp ~/.vimrc)
+    >- 좌우분할 - ctrl + w, v (:vs ~/.vimrc)
+
+    - 포커스 이동
+    >- ctrl + w, w : 순차적으로 이동
+    >- ctrl + w, t : 왼쪽 최상단
+    >- ctrl + w, b : 오른쪽 하단
+    >- ctrl + w, (h,j,k,l)  # 좌, 하, 상, 우
+
+    >- 같은 크기 : ctrl + w + =
+
+    - 세로 방향
+    >- Ctrl w +  , Ctrl w 숫자 +
+    >- :res +숫자
+    >-  Ctrl w -   , Ctrl w 숫자 -
+    >-  :res -숫자
+
+    - 가로 방향
+    >-  Ctrl w >  , Ctrl w 숫자 >
+    >-  :vertical res + 숫자
+    >-  Ctrl w <  , Ctrl w 숫자 <
+    >-  :vertical res - 숫자
+
+    >- Close split - <C-w>c (:close)
+    >- Close split and quit file - <C-w>q (:q)
+    >- Close all other splits - <C-w>o (:only)
 
 ## Shell Commands
 

@@ -180,6 +180,7 @@
         -> ps -ef | awk '{ print $1,$2 }'
         -> ps -ef | awk '{ print $0 }'
         -> ps -ef | awk '{print $1, "\t", $3}'
+
     31. sort
         -> b : 선행 공백 무시
         -> f : 대소문자 구분 안함
@@ -187,22 +188,125 @@
         -> r : 역순 (내림 차순) - sort kor -r | nl
         -> h : --human(2K, 1G)
         -> c : 정렬 되어 있는지 검사
-        -> k n: n번째 필드를 기준으로 정렬
+        -> k n : n번째 필드를 기준으로 정렬
         -> m : 이미  정렬된 파일들을 병합
-        -> 0 : 파일 출력
+        -> o : 파일 출력
         -> t : 필드 구분자를 지정 (기본은 공백)
         -> u : 정렬 후 중복 제거
         -> sort kor | nl
 
-    # .NET SDK Install
-    >- dotnet --info
-    >- dotnet --list-sdks
-    >- dotnet --list-runtimes
+    32. passwd
 
-    ## install dotnet
-    >- wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-    >- chmod +x ./dotnet-install.sh
-    >- ./dotnet-install.sh --version latest
+    33. ssh
+        -> ssh -p 22 viv@192.168.0.8
+    34. uniq
+
+    35. shuf
+
+    36. Auto SSH Login
+
+        - (Client)
+        -> ssh-keygen -t rsa -b 4096
+            -> file ~/.ssh/id_rsa
+            -> ~/.zshrc ->
+            -> ssh-copy -p 52344 root@server-ip
+
+        - (Git)
+        -> ssh-keygen -t ed25519 -C "kimburmjun@gmail.com"
+            -> eval "$(ssh-agent -s)
+            -> open ~/.ssh/config
+
+    37. tr : 문자 변경  및 삭제, translae or delete characters
+        - 삭제 (-d, delete)
+            -> echo "abcd" | tr -d 'c'
+            -> echo "aaabbbbcccccddddd" | tr -d 'bcd'
+            -> echo "1234abcdefg" | tr -d 'a-z' | nl
+            -> echo "1234abcdefg" | tr -d '0-9' | nl
+            -> echo "1245AbcZKy cde" | tr -d 'A-Z''a-z' | nl
+            -> echo "AaBb1234567HelloWorld" | tr -d '[:upper:]''[:lower:]' | nl
+            -> echo "AaBb1234567HelloWorld" | tr -d '[:digit:]' | nl # 숫자만 지우기
+            -> echo {1..9} | tr -d '1-4'
+            -> echo "abcdefg" | tr 'abc' 'ABC' | nl
+            -> echo "korea" | tr 'a-z' 'A-Z'
+            -> echo "서울 부산 대구 광주" | tr " " "\n"
+            -> echo "서울 부산 대구 광주" | tr " " "\v"
+            -> cat /etc/passwd | tr ':' ','
+            -> echo {a..z} | tr '[a-z]' '[A-Z]'
+            -> echo {a..z} | tr '[:lower:]' '[:upper:]'
+            -> echo {a..z} | tr '[:lower:]' '[:upper:]' | tr -d ' '
+            -> echo {a..z}{1..3} | tr -d ' '
+
+        - 변경
+            -> echo 'Abcd' | tr 'A' 'Z'
+            -> who | tr -s ' '
+
+        - -s : squeeze, 반복되는 1 문자 삭제
+            -> echo "kkkkbbbbssss" | tr -s kbs
+        - -t : truncate
+        - -c, -- complement : 보수 연산
+
+    38. expand : 탭을 공백으로 변환, Convert tabs in each FILE to spaces
+        -> echo -e "aa\tbb\tcc" | expand -t 4
+
+    39. unexpand
+        -> cat b30 | unexpand -t 2
+
+    40. touch
+        -> touch blankFile
+        -> touch -t 05201240 b5
+
+    # 표준 입출력 및 에러
+    # 숫자(0,1,2) = 파일 디스크립터 파일, 포인터, fopen fclose
+
+    - stdin ( 0 ) : 표준 입력 standard input (키보드)
+        -> nl 0< file
+        -> cat < s
+
+    - stdout ( 1 ) : 표준 출력 standard output (모니터)
+        -> date > d
+        -> who 1> w
+
+    - stderr ( 2 ) : 표준 에러 standard  error (모니터)
+        -> badcommand 2> saveToFile (에러 발생, 오류내용이 파일에 저장됨)
+        -> rmdir ./ds 2>/dev/null (에러 발생시 메시지 숨기기)
+        -> /dev/null : 블랙홀, 휴지통 개념
+
+    - 출력 재 지향 : ( 1> )
+        -> `date > d1` <==>  data 1> d1 (즉, 1이 생략되어 있음)
+
+    - Append ( >> ) : 파일내용 끝에 추가
+
+    - Here Document ( << ) :
+
+    - 입력 재 지향 : ( 0< )
+        -> nl < file
+        -> cat < file <==> cat 0< file (즉, 0 이 생략되어 있음)
+
+    - ^D : End Of File, 파일의 끝 (반듯이 빈칸에서)
+        -> cat << END > t3
+            >- haha
+            >- hoho
+            >- END
+
+    41. mkdir
+        -> mkdir d1
+        -> mkdir d1 d2 d3
+        -> mkdir dd{1..5}
+        -> mkdir -p d1/d2/d3
+
+
+    42. rmdir
+        -> rmdir -p d1/d2/d3
+
+    43. rm : 파일 삭제 (recursive, force)
+        -> rm -rf dir
+
+
+    44. cp : 파일 복사
+        ->
+
+    45. alias, unalias
+        -> turn off : \command
 
 
 ```
