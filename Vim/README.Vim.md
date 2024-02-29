@@ -554,7 +554,7 @@ abcdebcdebcde
     >- :bo terminal # 하단 전체
     >- :set splitbelow -> :terminal
     >- :vert term
-    >- :rightb vert term
+    >- :rightb :vert term
     >- .vimrc -> `cabbrev bterm bo term` -> :bterm
 
 ## Split
