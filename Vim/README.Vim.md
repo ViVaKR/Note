@@ -203,6 +203,7 @@
     g; - 다음 변경목록 위치로 점프
     Ctrl + ] - 커서가 가리키는 태그로 점프
     Tip 마킹한 곳으로 점프 시 그레이브 액센트 (`) 또는 아포스트로피 (') 모두 사용가능합니다. 아포스트로피 사용 시, 마킹한 곳의 줄 머리로 이동합니다. (공백 미포함)
+    >- delm 0-9 # 0 부터 9까지의 마크 삭제.
 
 ## 매크로
 
@@ -546,10 +547,18 @@ abcdebcdebcde
     >- :file new_file.txt
     >- :Explore
 
+## Open Terminal
+
+    >- :below terminal # 해당 칸 하단
+    >- :top terminal # 상단 전체
+    >- :bo terminal # 하단 전체
+    >- :set splitbelow -> :terminal
+    >- :vert term
+    >- :rightb vert term
+    >- .vimrc -> `cabbrev bterm bo term` -> :bterm
+
 ## Split
 
-    >- : vert term # termianl
-    >- : rightb vert term
     >- : vsp filename.txt # file
     >- : botright vnew filename.txt
 
@@ -565,17 +574,17 @@ abcdebcdebcde
 
     >- 같은 크기 : ctrl + w + =
 
-    - 세로 방향
+    - 세로 방향 크기 조절
     >- Ctrl w +  , Ctrl w 숫자 +
     >- :res +숫자
-    >-  Ctrl w -   , Ctrl w 숫자 -
-    >-  :res -숫자
+    >- Ctrl w -   , Ctrl w 숫자 -
+    >- :res -숫자
 
     - 가로 방향
     >-  Ctrl w >  , Ctrl w 숫자 >
-    >-  :vertical res + 숫자
+    >-  :vert(ical) res + 숫자
     >-  Ctrl w <  , Ctrl w 숫자 <
-    >-  :vertical res - 숫자
+    >-  :vert(ical) res - 숫자
 
     >- Close split - <C-w>c (:close)
     >- Close split and quit file - <C-w>q (:q)
@@ -584,4 +593,19 @@ abcdebcdebcde
 ## Shell Commands
 
     >- :!mv smaple.txt file_moved.txt
-    >- :!cp sample.txt file_copied.txt
+    >- :!cp sample.txt file_copied.tx
+
+## Register
+
+    - 등록하기
+        >- "(큰따옴표) + A(a) ~ Z(z) (레지스터명)
+
+    - 편집모드
+        >- <c-r> % : 작성중이 파일명
+
+    - 일반모드
+        >- 붙여넣기 -> " + p(P)
+
+    1. 무명 레지스터
+    2. 숫자 레지스터
+    3.
