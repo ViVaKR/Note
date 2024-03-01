@@ -609,3 +609,20 @@ abcdebcdebcde
     1. 무명 레지스터
     2. 숫자 레지스터
     3.
+
+## Split (창분리)
+
+    `:vsplit` (좌우분리)
+    `:split`  (상하분리)
+    `:term ++curwin` (현재 창에 터미널 열기)
+    `:bo 10sp`       (하단으로 10 크기 만큼 분리)
+    `:bo 10sp | term ++curwin  (하단으로 분리하고 터미널 열기)
+
+## 파일열기
+
+    `:e %:h`
+    `:FZF`
+    `:Ex`
+    `:e %:h`
+    `:e `pwd`
+    `:Sex dir/to/my`
