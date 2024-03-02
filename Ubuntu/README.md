@@ -203,6 +203,9 @@
 
     35. shuf
 
+    100. let
+        - 수식 다루기 정수 연산
+
     36. Auto SSH Login
 
         - (Client)
@@ -216,7 +219,10 @@
             -> eval "$(ssh-agent -s)
             -> open ~/.ssh/config
 
-    37. tr : 문자 변경  및 삭제, translae or delete characters
+    37. tr
+
+        - 문자 변경  및 삭제, translae or delete characters
+
         - 삭제 (-d, delete)
             -> echo "abcd" | tr -d 'c'
             -> echo "aaabbbbcccccddddd" | tr -d 'bcd'
@@ -580,7 +586,7 @@ echo "set disassembly-flavor intel" > ~/.gdbinit
 
 `(gdb) i reg eflags`
 
-## Reload
+## Debuggin Reload
 
 1. after source change -> file <exec file>
 2. $ `r - run`
