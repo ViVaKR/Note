@@ -608,7 +608,6 @@ abcdebcdebcde
 
     1. 무명 레지스터
     2. 숫자 레지스터
-    3.
 
 ## Split (창분리)
 
@@ -623,6 +622,5 @@ abcdebcdebcde
     `:e %:h`
     `:FZF`
     `:Ex`
-    `:e %:h`
     `:e `pwd`
     `:Sex dir/to/my`

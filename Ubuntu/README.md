@@ -1,6 +1,6 @@
 # Ubuntu
 
-## Shell ZSH
+## Shell ZSH, BASH
 
 ```zsh
 
@@ -36,6 +36,14 @@
 
     # install utilities
     $ sudo apt-get install -y bsdmainutils
+
+    >- Shell (쉘, 명령어 해석기) Types : sh, ksh, csh, tch, bash, zsh, dash
+    >- $ echo $SHELL
+
+    0. enable : 내부 명령어 확인하기
+        - enable | column
+        - 내부 명령어 : 쉘 안에 포함되어야 하는 명령어, 쉘만 있으면 실행 가능한 명령어
+        - 외부 명령어 : 별도로 설치해야만 실행할 수 있는 명령어
 
     1. cal : -n, -b, >, >>, -
     2. tac
@@ -116,7 +124,8 @@
         -> run-help # bultin commands list
         -> run-help echo
 
-    19. env : 환경변수
+    19. env, printenv
+        - printenv | grep 'HIST*'
 
     20. printf
         -> printf "%d\t%f\t%s\n" 100 3.14 'A' # imadate value
@@ -203,9 +212,6 @@
 
     35. shuf
 
-    100. let
-        - 수식 다루기 정수 연산
-
     36. Auto SSH Login
 
         - (Client)
@@ -216,7 +222,7 @@
 
         - (Git)
         -> ssh-keygen -t ed25519 -C "kimburmjun@gmail.com"
-            -> eval "$(ssh-agent -s)
+            -> eval "$(ssh-agent -s)"
             -> open ~/.ssh/config
 
     37. tr
@@ -261,6 +267,139 @@
         -> touch blankFile
         -> touch -t 05201240 b5
 
+    41. mkdir
+        -> mkdir d1
+        -> mkdir d1 d2 d3
+        -> mkdir dd{1..5}
+        -> mkdir -p d1/d2/d3
+
+
+    42. rmdir
+        -> rmdir -p d1/d2/d3
+
+    43. rm : 파일 삭제 (recursive, force)
+        -> rm -rf dir
+
+
+    44. cp : 파일 복사
+        ->
+
+    45. alias, unalias
+        -> turn off : \\command
+
+    46. let : $ enable
+        - 수식 다루기 정수 연산
+        - id++, id--, ++id, --id
+        - !, ~, *, /, +, -, **
+        - <<, >>
+        - <=, >=, <, >
+        - &, ^, |
+        - &&, ||
+        - expr ? expr : expr
+        - =, *=, /=, %=
+        - +=, -=, <<=, >>=
+        - &=, ^=, |=
+        - a=2
+            - let a+=4 && echo $a
+            - let a\*\*=8 && echo $a
+            - let a/=2 && echo $a
+        - echo $((a + 10))
+        - echo $((a * 2))
+        - b=$((2^10)) && echo $b
+        - b=$((2 << 1)) && echo $b
+        - b=$((100 >> 2)) && echo $b
+        - echo $[a - 123] // single square brackets
+        - echo $[++a]
+        - let b=$[0 | 1] && echo $b
+        - let b=$[1 & 1] && echo $b
+        - let b=$[3 > 5 ? 500 : 100] && echo $b
+
+    46. history
+        - echo $HISTFILE
+        - history -5
+        - history +5
+
+    47. expr : external command, 외부명령어
+        - expr 1 / 2
+
+    48. bc (basic command)
+        - echo "3.14 * 5 *5" | bc
+        - echo "2^8" | bc
+        - x=`echo "2^10" | bc` && $x
+
+    49. USER Info
+        - Ubuntu
+            - sudo -i
+            - su - root
+            - passwd
+            - useradd -d /home/world -m -b /home/world -s /bin/zsh world
+            - userdel world
+
+        - CentOS
+            - su - root
+            - useradd
+            - passwd viv
+        - id
+            - id -u
+            - id -g
+        - logname
+        - who
+        - w : detail view
+            - IDLE : 로그인 후 대기 시간.
+        - whoami
+        - users
+        - groups
+        - tty
+            - w --> get user TTY number
+            - 사용자간 TTY 는 중복되지 않음.
+            - (send message by TTY, root) --> echo "Hello, viv" > /dev/pts/1
+
+    50. Permission
+        - Owner Group Other
+        - NOS - Multi-User Operating System
+        - 확장자 개념이 없고 권한으로 관리
+        - r, w, x
+            - r (4, 2^2, Read)
+            - w (2, 2^1, Write), 디렉토리에서의 쓰기 권한은 파일 삭제도 가능하므로 주의 필요.
+            - x (1, 2^0, Execute), 디렉토리에서의 실행 권한은 디렉토리에 진입할 수 있는 권한을 나타냄.
+        - chown : 소유자
+        - chgrp : 소유그룹
+        - chmod
+            -> chmod u=r, g=x, o=r <fileName>
+            -> chmod +x <fileName>
+            > Get file Stat
+                - $ (Ubuntu) stat -c '%a %h %U %G %s %y %n' <fileName>
+                %a     access rights in octal (note '#' and '0' printf flags)
+                %h     number of hard links
+                %U     user name of owner
+                %G     group name of owner
+                %s     total size, in bytes
+                %y     time of last data modification, human-readable
+                %n     file name
+                - (macos) $ stat -f '%A %N' <fileName>
+                - (macos) stat -f '%A %N' *
+        - useradd
+        - groupadd
+        - newgrp [group-name] # only current session
+        - usermod -a -G groupName userName
+        - file <fileName>
+
+    51. umask : default mask value
+        - umask <value>
+        - (root, 022) directory -> 755, file -> 644
+            - (dir) 777 - 022(umask) => 755, (file) -111 -> 644
+            - 파일은 디렉토리에서의 x 값 1을 각각(user/group/other) 빼줌. (1 1 1)
+        - (user, 002) directory -> 775, file -> 664
+            - (dir) 777 - 002(umask) => 775, file -> 664
+
+    52. HOME
+
+    53. du
+
+    54. df
+
+
+
     # 표준 입출력 및 에러
     # 숫자(0,1,2) = 파일 디스크립터 파일, 포인터, fopen fclose
 
@@ -293,26 +432,6 @@
             >- haha
             >- hoho
             >- END
-
-    41. mkdir
-        -> mkdir d1
-        -> mkdir d1 d2 d3
-        -> mkdir dd{1..5}
-        -> mkdir -p d1/d2/d3
-
-
-    42. rmdir
-        -> rmdir -p d1/d2/d3
-
-    43. rm : 파일 삭제 (recursive, force)
-        -> rm -rf dir
-
-
-    44. cp : 파일 복사
-        ->
-
-    45. alias, unalias
-        -> turn off : \command
 
 
 ```
@@ -416,203 +535,18 @@
     $ ssh-keygen -t ed25519 -b 4096
 
     # 우분투 버전 업그레이드
-    # kernel upgrade : -> Prompt=normal
-    $ sudo nano /etc/update-manager/release-upgrades
+    $ sudo vim /etc/update-manager/release-upgrades
+        (edit) -> `kernel upgrade : -> Prompt=normal`
+
     $ sudo iptables -I INPUT -p tcp --dport 1022 -j ACCEPT
     $ sudo do-release-upgrade
 ```
 
-## GDB
-
-```bash
-$ gdb <exe file>
-(gdb) layout asm
-(gdb) break _start
-(gdb) run
-(gdb) stepi # step into
-(gdb)
-(gdb) info registers eax
-(gdb) stepi
-(gdb) info registers ebx #== info reg ebx
-
-```
-
-- DB (Define Byte) 8 bit
-- DW (Define Word. Generally 2bytes on typical(대표적인) x86 32 bit system)
-- DD (Define double word. Generally 4 bytes ) 4 (32bit)
-- DQ 8
-- DT 10
-    - db      0x55                ; just the byte 0x55
-    - db      0x55,0x56,0x57      ; three bytes in succession
-    - db      'a',0x55            ; character constants are OK
-    - db      'hello',13,10,'$'   ; so are string constants
-    - dw      0x1234              ; 0x34 0x12
-    - dw      'A'                 ; 0x41 0x00 (it's just a number)
-    - dw      'AB'                ; 0x41 0x42 (character constant)
-    - dw      'ABC'               ; 0x41 0x42 0x43 0x00 (string)
-    - dd      0x12345678          ; 0x78 0x56 0x34 0x12
-    - dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-    - ddq     0x112233445566778899aabbccddeeff00
-    - do      0x112233445566778899aabbccddeeff00 ; same as previous
-    - dd      1.234567e20         ; floating-point constant
-    - dq      1.234567e20         ; double-precision float
-    - dt      1.234567e20         ; extended-precision float
-
-DB 그리고 친구들: 초기화된 데이터 선언
-DB, DW, DD, DQ, DT, DDQ, 그리고DO 에서 초기화된 데이터를 선언하는 데 사용됩니다. 출력 파일 다음과 같은 다양한 방법으로 호출할 수 있습니다.
-
-$ gdb <exe file>
-$ layout asm
-$ break _start
-$ run
-$ stepi # step into
-
-$ (gdb) info registers eax
-$ stepi
-$ (gdb) info registers ebx #== info reg ebx
-
-- DB (Define Byte) 8 bit
-- DW (Define Word. Generally 2bytes on typical(대표적인) x86 32 bit system)
-- DD (Define double word. Generally 4 bytes ) 4 (32bit)
-- DQ 8
-- DT 10
-
-    db      0x55                ; just the byte 0x55
-    db      0x55,0x56,0x57      ; three bytes in succession
-    db      'a',0x55            ; character constants are OK
-    db      'hello',13,10,'$'   ; so are string constants
-    dw      0x1234              ; 0x34 0x12
-    dw      'A'                 ; 0x41 0x00 (it's just a number)
-    dw      'AB'                ; 0x41 0x42 (character constant)
-    dw      'ABC'               ; 0x41 0x42 0x43 0x00 (string)
-    dd      0x12345678          ; 0x78 0x56 0x34 0x12
-    dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-    ddq     0x112233445566778899aabbccddeeff00
-    ; 0x00 0xff 0xee 0xdd 0xcc 0xbb 0xaa 0x99
-    ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-    do      0x112233445566778899aabbccddeeff00 ; same as previous
-    dd      1.234567e20         ; floating-point constant
-    dq      1.234567e20         ; double-precision float
-    dt      1.234567e20         ; extended-precision float
-
-DB 그리고 친구들: 초기화된 데이터 선언
-DB, DW, DD, DQ, DT, DDQ, 그리고DO 에서 초기화된 데이터를 선언하는 데 사용됩니다. 출력 파일 다음과 같은 다양한 방법으로 호출할 수 있습니다.
-
-        db 0x55; 바이트만 0x55
-        db 0x55,0x56,0x57; 연속 3바이트
-        db 'a',0x55; 문자 상수는 정상입니다.
-        db '안녕하세요', 13, 10,'$'   ; 문자열 상수도 마찬가지입니다.
-        dw 0x1234; 0x340x12
-        dw'a'; 0x410x00(숫자일 뿐)
-        dw 'ab'; 0x410x42(문자 상수)
-        dw 'abc'; 0x410x420x430x00 (string)
-        dd 0x12345678; 0x780x560x34 0x12
-        dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-        ddq     0x112233445566778899aabbccddeeff00
-        ; 0x00 0xff 0xee 0xdd 0xcc 0xbb 0xaa 0x99
-        ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-        do     0x112233445566778899aabbccddeeff00 ; same as previous
-        dd 1.234567e20; 부동 소수점 상수
-        dq 1.234567e20; 이중 정밀 부유물
-        dt 1.234567e20; 확장 정밀 부유물
-DT 숫자 상수를 피연산자로 사용하지 않습니다.DDQ 플로트를 허용하지 않습니다. 피연산자로 상수를 지정합니다. 다음보다 큰 사이즈DD 문자열을 다음과 같이 사용할 수 없습니다. 피연산자
-
-[s]tep
-[s]tep[i]
-[n]extx
-[n]ext[i]
-[b]ack[t]race : Prints a stack trace, listing each function and its arguements.
-This deos the same thing as the commands info stack and wherei
-c[ontinue]
-q(uit)
-
-echo "set disassembly-flavor intel" > ~/.gdbinit
-
-## Reload
-
-- after source change
-- `:file <exec file>`
-- `$ no change -> r - run`
-
-`(gdb) print /t $eax  # binary`
-
-```bash
-    print /x $eip             Print program counter in hex
-    print /d $eip             Print program counter in decimal
-    print /t $eip             Print program counter in binary
-
-    x/w   0xbffff890         # Examine (4-byte) word starting at address 0xbffff890
-    x/w   $esp               # Examine (4-byte) word starting at address in $esp
-    x/wd  $esp               # Examine (4-byte) word starting at address in $esp. Print in decimal
-    x/a   $esp               # Examine address in $esp. Print as offset from previous global symbol.
-    x/s   0xbffff890         # Examine a string stored at 0xbffff890
-    x/20b sum                # Examine first 20 opcode bytes of function sum
-    x/10i sum                # Examine first 10 instructions of function sum
-```
-`print /t $eax << db 0x55; 바이트만 0x55`
-
-    >- db 0x55,0x56,0x57; 연속 3바이트
-    >- db 'a',0x55; 문자 상수는 정상입니다.
-    >- db '안녕하세요', 13, 10,'$'   ; 문자열 상수도 마찬가지입니다.
-    >- dw 0x1234; 0x340x12
-    >- dw'a'; 0x410x00(숫자일 뿐)
-    >- dw 'ab'; 0x410x42(문자 상수)
-    >- dw 'abc'; 0x410x420x430x00 (string)
-    >- dd 0x12345678; 0x780x560x34 0x12
-    >- dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-    >- ddq     0x112233445566778899aabbccddeeff00
-    >- ; 0x00 0xff 0xee 0xdd 0xcc 0xbb 0xaa 0x99
-    >- ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
-    >- do     0x112233445566778899aabbccddeeff00 ; same as previous
-    >- dd 1.234567e20; 부동 소수점 상수
-    >- dq 1.234567e20; 이중 정밀 부유물
-    >- dt 1.234567e20; 확장 정밀 부유물
-
-```bash
-    [s]tep
-    [s]tep[i]
-    [n]extx
-    [n]ext[i]
-    [b]ack[t]race
-    c[ontinue]
-    q(uit)
-```
-
-## gdb init
-
-`echo "set disassembly-flavor intel" > ~/.gdbinit`
-
-`(gdb) x/2x 0x804a000`
-
-`(gdb) i reg eflags`
-
-## Debuggin Reload
-
-1. after source change -> file <exec file>
-2. $ `r - run`
-
-(gdb) print /t $eax       # binary
-print /x $eip             Print program counter in hex
-print /d $eip             Print program counter in decimal
-print /t $eip             Print program counter in binary
-
-- x/w   0xbffff890          Examine (4-byte) word starting at address 0xbffff890
-- x/w   $esp                Examine (4-byte) word starting at address in $esp
-- x/wd  $esp                Examine (4-byte) word starting at address in $esp. Print in decimal
-- x/a   $esp                Examine address in $esp. Print as offset from previous global symbol.
-- x/s   0xbffff890          Examine a string stored at 0xbffff890
-- x/20b sum                 Examine first 20 opcode bytes of function sum
-- x/10i sum                 Examine first 10 instructions of function sum
-
-`print /t $eax << 1`
-
----
-
 ## SysCall (x86_64, 64bit)
 
->- sys_write
-- NR = 1
-- unsigned int fd (File Descriptor), const char *buf (Location of string to write), size_t count (Length of string)
-- 0 : Standard Input
-- 1 : Standard Output
-- 2 : Standard Error
+   - sys_write
+   - NR = 1
+   - unsigned int fd (File Descriptor), const char *buf (Location of string to write), size_t count (Length of string)
+     - 0 : Standard Input
+     - 1 : Standard Output
+     - 2 : Standard Error

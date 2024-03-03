@@ -12,6 +12,7 @@ $ gdb <exe file>
 (gdb) info registers ebx #== info reg ebx
 
 ```
+
 - DB (Define Byte) 8 bit
 - DW (Define Word. Generally 2bytes on typical(대표적인) x86 32 bit system)
 - DD (Define double word. Generally 4 bytes ) 4 (32bit)
@@ -124,6 +125,7 @@ echo "set disassembly-flavor intel" > ~/.gdbinit
     x/20b sum                # Examine first 20 opcode bytes of function sum
     x/10i sum                # Examine first 10 instructions of function sum
 ```
+
 `print /t $eax << db 0x55; 바이트만 0x55`
 
     >- db 0x55,0x56,0x57; 연속 3바이트
