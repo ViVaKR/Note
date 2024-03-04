@@ -12,7 +12,8 @@
     - :
     - 문서저장, 종료, 문자열 찾기 또는 수정하기
 4. Visual
-    - CTRL + V, SHIFT + V
+    - CTRL + V
+    - SHIFT + V
     - 마우스 드래그 하여 블럭을 씌우는 역할 수행
     - 문서 내 범위 지정
 
@@ -44,8 +45,12 @@
     E - 다음 단어 끝으로 점프 (특수문자 포함)
     b - 이전 단어 시작으로 점프
     B - 이전 단어 시작으로 점프 (특수문자 포함)
+    <CR> - 다음 줄의 첫글자로 이동
+    -    - 윗줄의 첫 글자로 이동
+    +    - 다음 줄의 첫글자로 이동
     ge - 이전 단어 끝으로 점프
     gE - 이전 단어 끝으로 점프 (특수문자 포함)
+    g_ -> goes to the last non-whitespace character.
     % - 현재 괄호의 짝으로 점프 (:h matchpairs를 통해 더 많은 정보를 얻을 수 있습니다.)
     0 - 현재 행 시작으로 점프 (공백 포함)
     ^ - 현재 행 시작으로 점프
@@ -66,14 +71,14 @@
     zz - 화면 위치 중간으로 조정
     zt - 화면 맨 위로 커서 이동
     zb - 화면 맨 아래로 커서 이동
-    <c-o> - 이전 커서 위치로 이동
-    <c-i> - 새로운 커서 위치로 이동
-    Ctrl + e - 한 줄 아래로 이동
-    Ctrl + y - 한 줄 위로 화면 조정
-    Ctrl + b - 한 화면 위로 조정
-    Ctrl + f - 한 화면 아래로 조정
-    Ctrl + d - 반 화면 아래로 조정
-    Ctrl + u - 반 화면 위로 조정
+    <C-o> - 이전 커서 위치로 이동
+    <C-i> - 새로운 커서 위치로 이동
+    <C-e> - 한 줄 아래로 이동
+    <C-y> - 한 줄 위로 화면 조정
+    <C-b> - 한 화면 위로 조정
+    <C-f> - 한 화면 아래로 조정
+    <C-d> - 반 화면 아래로 조정
+    <C-u> - 반 화면 위로 조정
 
 ## 삽입 모드
 
@@ -106,23 +111,31 @@
     g~$ - 커서에서 끝까지 대소문 변환
     gu - 커서 이동으로 소문자 전환
     gU - 커서 이동으로 대문자 전환
-    cc - 한 행 전체 새로 쓰기
+    cc - 한 행 전체 새로 쓰기, 커서가 있는 줄을 교체
     c$ or C - 한 행 끝까지 새로 쓰기
-
-    yiw - 한 단어 복사하기
-    ciw - 한 단어 전체 새로 쓰기
+    c[h, j, k, l] -> 커서의 [앞, 다음줄, 윗줄, 현재] 교체
     cw or ce - 한 단어 끝까지 새로 쓰기
+    ciw - 한 단어 전체 새로 쓰기
+    y0 - 커서 위치 부터 줄 처음까지 복사
+    y$ - 커서 위치 부터 줄 끝까지 복사
+    yy - 커서가 있는 줄 복사
+    yw - 커서 위치 부터 단어의 끝까지 복사
+    yk - 커서가 있는 줄과 그 윗 둘을 복사
+    yj - 커서가 있는 줄과 그 다음 줄을 복사
+    yiw - 한 단어 복사하기
     s - 한 문자 새로 쓰기
     S - 한 행 전체 새로 쓰기 (cc와 동일)
+    x, dl - 커서 위치의 글자 삭제
+    X, dh - 커서 바로 앞의 글자 삭제
     xp - 잘라내고 붙여넣기
     u - 실행취소
     U - 최근 수정한 줄 복원(실행취소)
-    Ctrl + r - 다시실행
+    <C-r> - 다시실행
     . - 최근 명령어 반복
     x - 한글자 지우기
+    d[h,j, k, l] - 커서의 [앞, 다음줄, 윗줄, 현재] 삭제
     d2w => delets two words
     dt; => delete until ;
-    d/hello => delete until hello
     dd => delete line
     D - delete from cursor until the end of the line
 
@@ -185,7 +198,7 @@
              = - 표현식 레지스터
              _ - 블랙홀 레지스터
 
-## 마킹
+## 마킹, marking
 
     :marks - 마킹 항목 표시
     ma - 현재 위치를 a로 마킹
@@ -202,8 +215,8 @@
     g, - 이전 변경목록 위치로 점프
     g; - 다음 변경목록 위치로 점프
     Ctrl + ] - 커서가 가리키는 태그로 점프
-    Tip 마킹한 곳으로 점프 시 그레이브 액센트 (`) 또는 아포스트로피 (') 모두 사용가능합니다. 아포스트로피 사용 시, 마킹한 곳의 줄 머리로 이동합니다. (공백 미포함)
-    >- delm 0-9 # 0 부터 9까지의 마크 삭제.
+        - Tip 마킹한 곳으로 점프 시 그레이브 액센트 (`) 또는 아포스트로피 (') 모두 사용가능합니다. 아포스트로피 사용 시, 마킹한 곳의 줄 머리로 이동합니다. (공백 미포함)
+    :delm <0-9> - 0 부터 9까지의 마크 삭제.
 
 ## 매크로
 
@@ -248,24 +261,53 @@
     gg=G - 전체 버퍼 자동정렬
     ]p - 붙여쓰고 현재 행 들여쓰기 조
 
-## 나가기
+## 끝줄모드
 
     :w - 저장하기
+    :w >> [file]<CR> -> 편집중인 문서를 [file]에 덧 붙여서 저장
     :w !sudo tee % - 관리자로 저장하기
     :wq or :x or ZZ - 저장하고 나가기
+    :e [file] -> 파일 불러오기
+    :e# -> 이전에 펴집하던 파일을 불러옴
+    :r [file]<CR> -> [file]을 커서 위치에 끼워 넣기
+    :r ![command]<CR> -> 실행결과를 끼워 넣기
+    :set [option]<CR> -> option turn on
+    :set no[option]<CR> -> option turn off
     :q - 나가기 (변경확인)
     :q! or ZQ - 나가기 (변경무시)
     :wqa - 모든 탭 저장하고 나가기
 
-## 검색과 바꾸기
+## 상용구
+
+    :ab <keyword> <syntax><CR>
+    :ab <keyword> <syntax<C-v><C-m>next line><CR>
+
+## Settings
+
+    :set rnu (relativenumber)
+    :set nornu (norelativenumber)
+
+    :set nornu nonu
+
+    :set <option>   (turn on)
+    :set no<option> (turn off)
+    :set <option>!  (toggle)
+    :set <option>?  (chekc if an option is on or off)
+    :set <option>&  (Set back to its default)
+
+## Pattern, 패턴 검색 및 변경
 
     /pattern - 패턴 검색 (순방향)
     ?pattern - 패턴 검색 (역방향)
     \vpattern - 특수 매직 패턴
     n - 다음 검색항목으로 점프, repeat forward
     N - 이전 검색항목으로 점프, repeat backward
-    :%s/old/new/g - 모든 old를 new로 바꾸기
-    :%s/old/new/gc - 모든 old를 new로 확인하며 바꾸기
+    :s/old/new<CR> - 현재 줄으 처음 old 를 new 로 교체
+    :s/old/new/g<CR> - 현재 줄의 모든 old 를 new 로 교체
+    :1,20s/old/new/g<CR> - 1 부터 20 번째 줄까지 모든 old를 new 로 교체
+    :%s/old/new/g - 문서 전체에서 old를 new로 바꾸기
+    :%s/old/new/gc - 문서 전체에서 old를 new로 확인하며 바꾸기
+    :g/pattern/s/old/new/g<CR> - pattern 이 있는 모든 줄의 old를 new 로 교체
     :noh[lsearch] - 검색 하이라이트 제거
 
 ## 여러 파일 검색
@@ -339,7 +381,6 @@
 - `di[`
 - `di{`
 - d + {Motion} - Motion (h,i,k,l)
-- dj - 현 커부 아 줄을 삭제
 
 ## 운영체제 클립보드에서 Vim으로 붙여넣기
 
@@ -349,7 +390,7 @@
 - 레지스터를 지정하는 방법이 쌍따옴표(")와 레지스터 이름을 나타내는 문자를 연결시키는 것이었다. 위 명령들에서 "* 는 클립보드를 지시하는 레지스터다.
 - 마찬가지로 레지스터명으로 "+ 을 입력해도 동일한 결과를 볼 수 있다.
 
-## Vim 에서 운영체제 클립도드로 복사하기
+## Vim 에서 운영체제 클립보드로 복사하기
 
 - `*y{모션}` 명령 또는 `"*Y` 명령을 활용하여 클립보드로 원하는 내용을 복사한다.
 - y 대신 삭제 관련 명령을 활용하여 지워진 내용이 클립보드에 복사되도록 할 수도 있다
@@ -369,7 +410,9 @@
 - S
 - C
 
-## Replace Term $\rightarrow\,$`:%s/origin/replace/g`
+## Replace Term $\rightarrow\,$
+
+- `:%s/origin/replace/g`
 
 ## Within Specific Lines
 
@@ -386,6 +429,16 @@
 >- `:m +2` or `:m -3`
 
 ## map : recursive map
+
+    :map - 일반, 비주얼 모드
+    :map - 입력, 명령줄 모드
+    :imap - 입력모드
+    :nmap - 일반모드
+    :vmap - 비주얼모드
+    :cmap - 명령줄모드
+    :tmap - 터미널모드
+    :noremap
+        -
 
 ## noremap : non-recursive map
 
@@ -408,11 +461,15 @@
 ## Vim Cursor Settings
 
 ```bash
+# vim cursor style
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
-## options
+# vim 편집기 빠져 나갈 때 터미널 커서 -> vertical bar
+# 6 - steady bar (xterm)
+`autocmd VimLeave * silent !echo -ne "\e[6 q"`
 
+## options
 Ps = 0  -> blinking block.
 Ps = 1  -> blinking block (default).
 Ps = 2  -> steady block.
@@ -486,11 +543,9 @@ abcdebcdebcde
 
 ## GoTo Line Number
 
-    >- <line>
+    :<line number>
 
 :help v_g_CTRL-A
-
-- "100"
 
 ## Increament the number -> `<c-a>`
 
@@ -601,7 +656,7 @@ abcdebcdebcde
         >- "(큰따옴표) + A(a) ~ Z(z) (레지스터명)
 
     - 편집모드
-        >- <c-r> % : 작성중이 파일명
+        >- <c-r> % : 작성중인 파일    `a - 마크 a로 점프명
 
     - 일반모드
         >- 붙여넣기 -> " + p(P)
