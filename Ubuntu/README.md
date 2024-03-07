@@ -40,17 +40,67 @@
     >- Shell (쉘, 명령어 해석기) Types : sh, ksh, csh, tch, bash, zsh, dash
     >- $ echo $SHELL
 
-    0. enable : 내부 명령어 확인하기
-        - enable | column
-        - 내부 명령어 : 쉘 안에 포함되어야 하는 명령어, 쉘만 있으면 실행 가능한 명령어
-        - 외부 명령어 : 별도로 설치해야만 실행할 수 있는 명령어
+---
 
-    1. cal : -n, -b, >, >>, -
+    [ 리눅스 명령어 종류 ]
+
+    >- compgen -a (-k), - whence -wm '*'
+
+    - alias
+        - alias c (cp, rq)
+
+    - keyword (reserved word)
+        - if, while, for, fi, select, done, then, case, do, else, elseif, esac, until, time, in, elif
+        - compgen -k | column
+
+    - function
+        - hi() { echo "Hi, Everyone"; }
+
+    - 내부 명령어 (builtin-command)  : 쉘 안에 포함되어야 하는 명령어, 쉘만 있으면 실행 가능한 명령어
+        - enable | column
+
+    -----------------------------------------------------------------
+    -		        compquote	fg		    pushln		umask
+    .		        compset		float		pwd		    unalias
+    :		        comptags	functions	r		    unfunction
+    [		        comptry		getln		read		unhash
+    alias		    compvalues	getopts		readonly	unlimit
+    autoload	    continue	hash		rehash		unset
+    bg		        declare		history		return		unsetopt
+    bindkey		    dirs		integer		sched		vared
+    break		    disable		jobs		set		    wait
+    builtin		    disown		kill		setopt		whence
+    bye		        echo		let		    shift		where
+    cd		        echotc		limit		source		which
+    chdir		    echoti		local		suspend		zcompile
+    command		    emulate		log		    test		zf_ln
+    compadd		    enable		logout		times		zformat
+    comparguments	eval		noglob		trap		zle
+    compcall	    exec		popd		true		zmodload
+    compctl		    exit		print		ttyctl		zparseopts
+    compdescribe	export		printf		type		zregexparse
+    compfiles	    false		private		typeset		zstat
+    compgroups	    fc		    pushd		ulimit		zstyle
+    - 외부 명령어 (external-command) :별도로 설치해야만 실행할 수 있는 명령어
+        - type pwd, type pwd
+    -----------------------------------------------------------------
+
+    [ Commands ]
+
+    0. type, file, stat
+        - type cp, type mv, type cat : type of file
+        - file a1, file dir1
+        - stat a1 : file details
+
+    1. cal
+
     2. tac
+
     3. tee : >> or > 대신 사용할 수 있음.
         -> cat a1 | tee a2
         -> dpkg --list | tee a3 # 화면출력 + 파일 저장
         -> who | tee -a a4 # append
+
     4. nl (number line) : == cat -b a1
         -> nl a1
         -> nl -w10 a1
@@ -61,6 +111,7 @@
     5. uptime
     6. dpkg --list
     7. apt autoremove
+
     8. head : 플러스 기호가 생략되어 있고 기본 10개
         -> head -n 10 number # default count 10
         -> head -n 5 number city # number 5, city 5 개
@@ -75,6 +126,7 @@
 
     10. seq
             -> seq 100 100 1500 > number
+
     11. wc -l fileName # line count
 
     12. split
@@ -101,7 +153,7 @@
         -> csplit -f x_ p # change prefix
         -> csplit -f aa_ ch.txt "/Chapter/2" "{*}" # multi split
 
-    14. w
+    14. wc
         -> wc -c file # byte
         -> wc -l file # line
         -> wc -w file # word
@@ -157,14 +209,24 @@
 		-> find / -type s -S ls -alF {} \; 2> /dev/null # hide error messages
 
 	22. vdir, dir
-	23. remove alias (원본 명령어 실행) : `\command` -> \ls
-	24. alias : view alias
+
+    23. remove alias (원본 명령어 실행) : `\command` -> \ls
+
+    24. alias : 별칭
+
 	25. dircolors : view colors
 		-> dircolors --help
 		-> Hello
+
     26. histroy
-    -> ~/.zsh_history
-    -> echo $HISTFILE
+        -> ~/.zsh_history
+        -> echo $HISTFILE
+        -> `$HISTSIZE` : 최근 명령어 저장할 갯수
+        -> file location : `vim /etc/zsh/zshrc` -> `HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history`
+        -> clear history
+            -> bash : history -c
+            -> zsh  : history -p
+
     27. paste
         -> paste name kor eng
         -> paste name kor eng -s > sc2
@@ -273,19 +335,18 @@
         -> mkdir dd{1..5}
         -> mkdir -p d1/d2/d3
 
-
     42. rmdir
         -> rmdir -p d1/d2/d3
 
     43. rm : 파일 삭제 (recursive, force)
         -> rm -rf dir
 
-
     44. cp : 파일 복사
         ->
 
     45. alias, unalias
         -> turn off : \\command
+        ->
 
     46. let : $ enable
         - 수식 다루기 정수 연산
@@ -327,7 +388,19 @@
         - echo "2^8" | bc
         - x=`echo "2^10" | bc` && $x
 
-    49. USER Info
+    49. USER :
+        - 관리자(root), 시스템 (no login), 일반
+        - root
+            - /etc/profile
+            - /etc/profile.d/*.sh
+            - /etc/profile.d/*.local
+            - /etc/bashrc
+        - user
+            - ~/.bash_profile
+            - ~/.bashrc
+            - ~/.bash_history
+            - ~/.bash_logout
+
         - Ubuntu
             - sudo -i
             - su - root
@@ -392,13 +465,109 @@
         - (user, 002) directory -> 775, file -> 664
             - (dir) 777 - 002(umask) => 775, file -> 664
 
-    52. HOME
+    52. HOME (~)
+        - root (`/`)
+            - /bin, /root, /etc, /home, /usr, /tmp
+            - All your settings, config : /etc
+            - binary : /bin
+        - home (`~`)
+            - each users directories
+        - root : 시스템 관리자 (administrator, prompt -> `#`)
+        - 일반 사용자 (user, prompt -> `$` or `%`)
+
+        # after login #
+        # (모든 사용자 용, root 관할)
+        - (1) /etc/profile
+            - (2) /etc/profile.d/*.sh *.local
+
+        # (개별 사용자 용)
+        - bash
+            - (3) ~/.profile or ~/.bash_profile # user master file
+            - (4) ~/.bashrc => `/etc/bash.bashrc` or `/etc/bashrc (모든 사용)`
+                - ~/.bash_aliases
+            - ~/.bash_history
+            - ~/.bash_logout
+
+        - zsh
+            - (3) /etc/zsh/zprofile # (모든 사용자 용, root 관할)
+            - (4) ~/.zshrc (개별 사용자) => `/etc/zsh/zshrc (모든 사용자)`
+            - /etc/zsh/zshenv
+
+        - export
 
     53. du
+        - du -sh ~/Temp
+        - du -shL /etc # sum, human, symbolic link (링크 파일 사이즈까지)
+        - quot지
+        - fallocate -l 100M temp
 
     54. df
+        - df -h # -h: , -H: , -i : inodes count
+            - /boot : like C drive
+            - / : main drive
+            -
+    55. env : 전역변수(환경변수, 시스템 전체에 영향을 줌)
+        - env
 
+    56. set : 지역변수
+        - set
+        - helloworld() { echo 'Hello, World'; }
+        - 해당 세션에서만 적용.
+        - $* : $0 $1 $2 $3 ...
+            - set 400 200 700
+            - $1 - 400, $2 - 200, $* - 400 200 700
+        - set $(date)
+            - `2024. 03. 07. (목) 11:25:05 KST`
+                - $1 - 2024., $2 - 03., $3 - 07., $* - all
+        - set -o or +o
+            - set -o, set -C : turn on
+            - set +o, set +C : turn off
+                - `$ set -o noclobber` : can not overwrite ` > `
+            - set -o ignoreeof : prevent -> `ctrl + d, logout`
 
+    57. printenv
+
+    58. source
+        - `$ source ~/.zshrc` == `$ . ~/.zshrc`
+
+    59. export : apply global
+        - export B=500    # variable
+        - export -f aha   # function export `-f` option
+
+    60. pstree : process tree view
+        - pstree | grep zsh
+
+    63. jobs : 현재 진행중인 프로세스 확인
+        (test)
+        - (1) sleep 600
+        - (2) ctrl + z
+        - (3) jobs
+        - (4) sleep 500
+        - (5) ctrl + z
+        - (6) jobs
+        - (7) kill -9 %1
+        - (8) kill -9 %2
+
+        - background (bg) : [command]&
+            -> bg
+        - forground  (fg) :
+            -> fg
+
+    64. kill :
+        - 시그널
+            >- kill -l
+        - kill -9 <pid>, kill -9 59600
+        - kill -9 %1  # kill by job number
+        - `man 7 signal` : OS <-signal-> Process
+        - Package Commands : `info coreutils`
+
+    65. sleep :
+        - sleep 30 : 30초 동안 대기상태, forground job
+        - CTRL + Z : suspended, to backgound, 백그라운드로 전환
+
+    66. ps
+        - ps -ef | grep sleep
+---
 
     # 표준 입출력 및 에러
     # 숫자(0,1,2) = 파일 디스크립터 파일, 포인터, fopen fclose
@@ -432,7 +601,6 @@
             >- haha
             >- hoho
             >- END
-
 
 ```
 
@@ -544,9 +712,9 @@
 
 ## SysCall (x86_64, 64bit)
 
-   - sys_write
-   - NR = 1
-   - unsigned int fd (File Descriptor), const char *buf (Location of string to write), size_t count (Length of string)
-     - 0 : Standard Input
-     - 1 : Standard Output
-     - 2 : Standard Error
+- sys_write
+- NR = 1
+- unsigned int fd (File Descriptor), const char *buf (Location of string to write), size_t count (Length of string)
+    - 0 : Standard Input
+    - 1 : Standard Output
+    - 2 : Standard Error
