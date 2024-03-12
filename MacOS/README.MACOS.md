@@ -293,3 +293,56 @@ lldb -- a.out argument1
 
 - Call Stack : 현재 상태 까지 거쳐온 함수를 역순으로 표시해중
 - Watch : 특정 변수나 객체의 값을 등록해 놓고 변화되는 값을 관찰할 수 있음.
+
+## find
+
+  >- find . -type f -name '*.db'
+  >- find . -maxdepth 1 -not -type d
+
+## glob
+
+- `**` : 0개 이상의 하위 디렉토리와 매칭
+
+  >- ls **/*.db
+  >- ls **/*.resx
+  >- ls */*.db
+  >- ls Temp/**/*.resx
+
+- `{ }` : 동시에 여러문자열 매칭
+  >- ls public/**/*.{html,HTML,css,CSS}
+  >- ls **/*.{jpg,JPG}
+
+- `[ ]` : 문자의 범위를 기준으로 파일 이름 매칭
+  >- ls **/*[aeiou]*
+  >- ls**/[A-C]*.cs
+  >- ls **/[!A-Z]* : 대문자로 시작하지 않는 파일만 검색
+  >- ls -lAh **/[A-E]*.cs | grep -v '^d' : 디렉토리는 제외하고 파일명이 A - E 로 시작하는 모든 파일 목록
+
+- `( )` :
+  >- `?(ab|cd)` : ab or cd or blank match -> `**/*.js?(x)` == **/*.{js,jsx}
+  >- `*(ab|cd)` : ab, abab, cd, cdcd, abcd, cdab ...
+
+## Only display Files
+
+  >- ls -F | grep -v /
+  >- ls -F | grep -Ev '/|@|*|=|>|\|'
+  >- ls -lAh | grep -v '^d'
+  >- `-v` : Don't show matching records
+  >- `A` : Show hidden files but don't show . and ..
+  >- `h` : Human readable file size
+  >- `^d` : Those start with letter d (for directory) i.e drwxrwxr-x <some file details> <folder name>
+  >- `F` option : Appends symbols to filenames
+
+## Attribute Symbols
+
+`@` : symbolic link
+  >- `xattr -l` file # lists the names of all xattrs.
+  >- `xattr -w` attr_name attr_value file # sets xattr attr_name to attr_value.
+  >- `xattr -d` attr_name file # deletes xattr attr_name.
+  >- `xattr -c` file # deletes all xattrs.
+  >- `xattr -h` # prints help
+
+  >- `*` : excutable
+  >- `=` : socket
+  >- `>` : door
+  >- `/` : directory
