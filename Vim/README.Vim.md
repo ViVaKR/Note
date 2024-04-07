@@ -3,7 +3,7 @@
 ## Mode
 
 1. Normal
-    - esc
+    - esc,
     - 커서 움직이기, 특정 명령 수행
 2. Insert
     - i, a, I, A
@@ -155,6 +155,11 @@
     vat - 태그<> 구간 선택
     vib - 소괄호() 내부 선택
     viB - 중괄호{} 내부 선택
+
+    sdklsdlkksl;dsdjfklsdjfksd
+    klsasdlfasjd <head>  sdk;k </head> (lsslsdlsdl) klsadf
+    jskldsdlkskldsdklsl{dlsdjfsdklsldsdlsdjf}kkkhh
+
     it - 태그<> 내부 선택
     Esc or Ctrl + c - 선택 모드 종료
     Tip b 또는 B 대신에 ( 또는 { 사용가능.
@@ -200,6 +205,7 @@
 
 ## 마킹, marking
 
+Hello World
     :marks - 마킹 항목 표시
     ma - 현재 위치를 a로 마킹
     `a - 마크 a로 점프
@@ -261,7 +267,7 @@
     gg=G - 전체 버퍼 자동정렬
     ]p - 붙여쓰고 현재 행 들여쓰기 조
 
-## 끝줄모드
+## 명령모드
 
     :w - 저장하기
     :w >> [file]<CR> -> 편집중인 문서를 [file]에 덧 붙여서 저장
@@ -286,9 +292,7 @@
 
     :set rnu (relativenumber)
     :set nornu (norelativenumber)
-
     :set nornu nonu
-
     :set <option>   (turn on)
     :set no<option> (turn off)
     :set <option>!  (toggle)
@@ -302,7 +306,7 @@
     \vpattern - 특수 매직 패턴
     n - 다음 검색항목으로 점프, repeat forward
     N - 이전 검색항목으로 점프, repeat backward
-    :s/old/new<CR> - 현재 줄으 처음 old 를 new 로 교체
+    :s/old/new<CR> - 현재 줄의 처음 old 를 new 로 교체
     :s/old/new/g<CR> - 현재 줄의 모든 old 를 new 로 교체
     :1,20s/old/new/g<CR> - 1 부터 20 번째 줄까지 모든 old를 new 로 교체
     :%s/old/new/g - 문서 전체에서 old를 new로 바꾸기
