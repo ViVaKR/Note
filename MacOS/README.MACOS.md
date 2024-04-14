@@ -238,6 +238,8 @@ Step Into
 (lldb) step
 (lldb) s
 
+(lldb) memory read -fx -c16 -s4 &a
+
 ## Step
 
 - Step into : 호출 되는 함수까지 포함 하여 한줄 한줄 실행

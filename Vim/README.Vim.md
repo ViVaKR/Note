@@ -156,10 +156,6 @@
     vib - 소괄호() 내부 선택
     viB - 중괄호{} 내부 선택
 
-    sdklsdlkksl;dsdjfklsdjfksd
-    klsasdlfasjd <head>  sdk;k </head> (lsslsdlsdl) klsadf
-    jskldsdlkskldsdklsl{dlsdjfsdklsldsdlsdjf}kkkhh
-
     it - 태그<> 내부 선택
     Esc or Ctrl + c - 선택 모드 종료
     Tip b 또는 B 대신에 ( 또는 { 사용가능.
