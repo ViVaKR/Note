@@ -136,6 +136,7 @@
     d[h,j, k, l] - 커서의 [앞, 다음줄, 윗줄, 현재] 삭제
     d2w => delets two words
     dt; => delete until ;
+    test demo test demo hh test test;
     dd => delete line
     D - delete from cursor until the end of the line
 
@@ -201,7 +202,6 @@
 
 ## 마킹, marking
 
-Hello World
     :marks - 마킹 항목 표시
     ma - 현재 위치를 a로 마킹
     `a - 마크 a로 점프
@@ -673,9 +673,10 @@ abcdebcdebcde
     `:bo 10sp | term ++curwin  (하단으로 분리하고 터미널 열기)
 
 ## 파일열기
-
     `:e %:h`
     `:FZF`
     `:Ex`
     `:e `pwd`
     `:Sex dir/to/my`
+
+Hello, World Fine Thanks And You?
