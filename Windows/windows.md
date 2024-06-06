@@ -149,7 +149,7 @@ cleanmgr
 
 ## 사용자 폴더 변경
 
-Windows 11 에서 새 사용자 계정을 만들면 운영체제(OS) 가 자동으로
+>- Windows 11 에서 새 사용자 계정을 만들면 운영체제(OS) 가 자동으로
 C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 
 1. 사용자 명과 SID 확인하기 `$ wmic useraccount get name, SID``
@@ -229,16 +229,15 @@ C:\Users\Username 에 새 사용자 프로필 폴더를 만듬
 - Special IP Addresses
   - 127.0.0.1 ~127.255.255.255
 
-
 ## winget
 
 ```bash
-  $ winget list
-  $ winget list --name git -s winget
-  $ winget list --id Git.Git
-  $ winget search git
-  $ winget install git -e -v <version> -s winget
-  $ winget upgrade git
-  $ winget uninstall git
-  $ winget source update
+  winget list
+  winget list --name git -s winget
+  winget list --id Git.Git
+  winget search git
+  winget install git -e -v <version> -s winget
+  winget upgrade git
+  winget uninstall git
+  winget source update
 ```
