@@ -230,6 +230,7 @@ lldb ./a.out
 
 ## Stepping Around
 
+```bash
 Step Over
 (lldb) next
 (lldb) n
@@ -239,6 +240,19 @@ Step Into
 (lldb) s
 
 (lldb) memory read -fx -c16 -s4 &a
+(lldb) memory read -s4 -fx -c4 &a
+
+# Memory Read
+(lldb) memory read -s4 -fd -c1024 &sum -force
+  * `-s` : for bytes grouping so use 1 for uint 8 for example and 4 for int
+  * `-f` : for format
+  * `-c` : is for count of bytes
+  * `--force` : if you are priinting more than 1024 bytes
+
+(lldb) x/16 0xb01234
+
+(lldb) memory read -o memory.txt -c512 0xb01233456
+```
 
 ## Step
 
