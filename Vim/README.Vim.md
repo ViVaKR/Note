@@ -672,11 +672,11 @@ abcdebcdebcde
     `:bo 10sp`       (하단으로 10 크기 만큼 분리)
     `:bo 10sp | term ++curwin  (하단으로 분리하고 터미널 열기)
 
-## 파일열기
+## 파일열기 및 목록 보기
+
     `:e %:h`
     `:FZF`
     `:Ex`
     `:e `pwd`
     `:Sex dir/to/my`
-
-Hello, World Fine Thanks And You?
+    `:Sex`, `:Vex`
