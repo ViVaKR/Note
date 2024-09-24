@@ -680,3 +680,17 @@ abcdebcdebcde
     `:e `pwd`
     `:Sex dir/to/my`
     `:Sex`, `:Vex`
+
+## list
+
+    :let aa = [1, 2, 3]
+    :let bb = aa
+    :call add(aa, 4)
+    :echo bb
+    --> [1, 2, 3, 4]
+
+## examples
+
+     :echo "0100" + 0
+         64
+
