@@ -514,23 +514,17 @@ Ps = 6  -> steady bar (xterm).
     >- {-,m}
     >- {-}
 
-abcdebcdebcde
-<b><i>Hello</i></b>
-
 ## 라인 복사 후 Ctrl + A : 일련번호 증가 시키기
 
     >- yy3pE(c-v)2jg(c-a)
-
     >- Ctrl + u   --> Move half a screen up
     >- Ctrl + d   --> Move half a screen down
     >- Ctrl + b   --> Mojve one full screen up
     >- Ctrl + f   --> Move one full screen down
-
     >- zo          --> Open a fold
     >- zc          --> Close a fold
     >- zr          --> Reduce folding level throughout the file
     >- zm          --> Increase folding level throughout the file
-
     >- `gcc` -> comment
 
 ---
@@ -551,6 +545,8 @@ abcdebcdebcde
 
 ## Recording (Macro, 일련번호를 98번 증가시키기)
 
+    `- "1"`
+    qqyyp ctrl+a q98@q
     >- Start -> `qq` // Start the macro in register q
     >- Duplicate the line -> `yyp`
     >- Selection Duplicated Number
@@ -688,9 +684,3 @@ abcdebcdebcde
     :call add(aa, 4)
     :echo bb
     --> [1, 2, 3, 4]
-
-## examples
-
-     :echo "0100" + 0
-         64
-
