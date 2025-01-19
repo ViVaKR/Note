@@ -438,7 +438,6 @@
     :cmap - 명령줄모드
     :tmap - 터미널모드
     :noremap
-        -
 
 ## noremap : non-recursive map
 

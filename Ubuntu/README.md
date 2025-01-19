@@ -269,7 +269,7 @@
     32. passwd
 
     33. ssh
-        -> ssh -p 22 viv@192.168.0.8
+        -> ssh -P 22 viv@192.168.0.8
     34. uniq
 
     35. shuf
@@ -718,3 +718,12 @@
     - 0 : Standard Input
     - 1 : Standard Output
     - 2 : Standard Error
+
+```bash
+
+# imac -> ubuntu
+scp -P 59222 root@192.168.0.8:~/.bashrc ~/Temp/hello.txt
+
+# ubuntu -> imac
+scp -P 22 vivakr@192.168.0.8:~/Temp/hello.txt ~/hi.txt
+```
