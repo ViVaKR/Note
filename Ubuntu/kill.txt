@@ -1,0 +1,2 @@
+kill -9 %1 # by job ID
+kill -9 1234 # by process ID

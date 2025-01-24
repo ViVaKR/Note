@@ -1,0 +1,2 @@
+su - # root 계정으로 변경하면서, root의 환경변수를 이용
+su - buddha

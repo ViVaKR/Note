@@ -1,0 +1,4 @@
+apt install ntp
+vim /etc/ntp.conf
+sudo systemctl restart ntp.service
+ntpq -p

@@ -1,0 +1,5 @@
+useradd -m -s /bin/bash buddha
+cat /etc/default/useradd
+userdel -r buddha
+groups buddha
+id buddha

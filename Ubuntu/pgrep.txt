@@ -1,0 +1,2 @@
+pgrep -f vim
+pgrep -f HiveMetaStor | xargs kill

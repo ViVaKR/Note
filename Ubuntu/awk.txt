@@ -1,0 +1,9 @@
+F : 분리문자, V : 파라미터 전달
+echo "I have a water" | awk -F " " '{ sub("have", "had",$2); print $0}'
+echo "Hello, World" | awk -F "," '{ print $1, $2 }'
+echo "Fine Thanks And You" | awk -F " " '{gsub(/[aA]/, "z"); print $0;}'
+# --> Fine Thznks znd You
+echo "I have a water." | awk -F " " '{print index($0,"t")}'
+get_str 1 2 3 4 5 6 7 8 9
+echo | awk '{printf("%.1f + %.2f = %.3f\n", 40.1, 20.2, 40.1 + 20.2)}'
+cat sample.txt | awk '{arr[$1] += $2} END { for (i in arr) {print i, arr[i]}}'

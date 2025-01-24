@@ -1,0 +1,4 @@
+cat /etc/group
+cat /etc/group | head -n 5
+groupadd bm
+groups

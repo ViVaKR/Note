@@ -1,0 +1,6 @@
+systemctl -h
+/etc/systemd/system/my.service
+systemctl start my
+systemctl status my
+systemctl is-active my
+systemctl stop my

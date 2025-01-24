@@ -1,0 +1,2 @@
+free -h
+free -h -s 1 # every 1 second

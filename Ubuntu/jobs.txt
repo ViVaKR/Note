@@ -1,0 +1,6 @@
+jobs
+sleep 100 &
+jobs
+fg %1
+bg %1
+kill %1

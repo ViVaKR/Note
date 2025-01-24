@@ -1,0 +1,3 @@
+sar
+sar -A
+sar 1 -u
