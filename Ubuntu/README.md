@@ -44,7 +44,7 @@
 
     [ 리눅스 명령어 종류 ]
 
-    >- compgen -a (-k), - whence -wm '*'
+    - compgen -a (-k), - whence -wm '*'
 
     - alias
         - alias c (cp, rq)
@@ -108,7 +108,7 @@
         -> nl -i10 -v10 a1 # 시작 번호 지정
         -> nl -i2 -v0 a1 # 짝수로 증가
 
-    5. uptime
+    5. uptime -p
     6. dpkg --list
     7. apt autoremove
 
@@ -207,6 +207,7 @@
 
 		-> find / -type s -exec ls -alF {} \; 2> /dev/null # hide error messages
 		-> find / -type s -S ls -alF {} \; 2> /dev/null # hide error messages
+        -> find /etc -maxdepth 1 -type d -exec ls -alhF {} \; 2> /dev/null
 
 	22. vdir, dir
 

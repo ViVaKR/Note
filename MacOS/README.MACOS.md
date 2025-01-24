@@ -54,6 +54,11 @@
 
     # SHA Check Sum
     >- shasum -a 256 /path/to/file
+
+    # Clear `DNS Cache`
+    # - dscacheutil -flushcache : macOS 에서 DNS 캐시를 초기화 함
+    # - killall - HUP mDNSResponder : DNS 응답을 처리하는 nDNSResponder 를 다시 시작하여 캐시를 완전히 삭제함.
+    sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
 ```
 
 ## mac port

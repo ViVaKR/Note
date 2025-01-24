@@ -595,7 +595,7 @@ Ps = 6  -> steady bar (xterm).
     >- :tabm n - Move the current opend Tab to the Nth position (Start from0)
     >- :saveas new_saved.txt
     >- :file new_file.txt
-    > :Explore
+    >- :Explore
 
 ## Open Terminal
 
