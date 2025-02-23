@@ -1,0 +1,4 @@
+Name|Age|Address
+Kim|35|Kor
+Lee|25|Math
+Pak|58|Eng
