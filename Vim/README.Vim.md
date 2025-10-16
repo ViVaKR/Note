@@ -515,7 +515,22 @@ Ps = 6  -> steady bar (xterm).
 
 ## 라인 복사 후 Ctrl + A : 일련번호 증가 시키기
 
-    >- yy3pE(c-v)2jg(c-a)
+- yy3p(C-v)2jg(C-a)
+  - g ctrl + a : 선택한 비주얼 블록 숫자 일련번호로 증가
+
+- g : 단독으로는 아무일도 안하지만 뒤에 오는 키 조합 으로 특수 동작을 수행함
+| 명령         | 의미                                |
+| ---------- | ----------------------------------- |
+| `gg`       | 파일의 첫 줄로 이동                     |
+| `gU`       | 선택한 영역 대문자로 변환                 |
+| `gu`       | 선택한 영역 소문자로 변환                 |
+| `g~`       | 대소문자 토글                          |
+| `gq`       | 텍스트 정렬 (reformat)                |
+| `g Ctrl-a` | **비주얼 블록 선택된 각 줄의 숫자들을 개별적으로 증가** ✅ |
+| `Ctrl-a`   | **현재 커서에 있는 숫자 1개 증가**              |
+
+---
+
     >- Ctrl + u   --> Move half a screen up
     >- Ctrl + d   --> Move half a screen down
     >- Ctrl + b   --> Mojve one full screen up
@@ -545,7 +560,9 @@ Ps = 6  -> steady bar (xterm).
 ## Recording (Macro, 일련번호를 98번 증가시키기)
 
     `- "1"`
-    qqyyp ctrl+a q98@q
+
+    `qqyyp ctrl+a q98@q`
+
     >- Start -> `qq` // Start the macro in register q
     >- Duplicate the line -> `yyp`
     >- Selection Duplicated Number
