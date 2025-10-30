@@ -1,6 +1,149 @@
 # Ubuntu
 
-## Shell ZSH, BASH
+## Bash
+
+```bash
+
+# snap
+sudo apt install -y snapd
+systemctl list-unit-files | grep snapd
+sudo systemctl status sanpd.service
+snamp version
+
+# certbot
+sudo snap install core
+sudo snap refresh core
+sudo snap install --classic certbot
+sudo ln -sf /snap/bin/certbot /usr/bin/certbot
+
+
+# remove service
+sudo systemctl disable --now service-name.service
+sudo rm /etc/systemd/system/service-name.service
+sudo systemctl daemon-reload
+
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv --version
+uv init
+
+uv python install 3.14
+uv python pin 3.14
+uv venv
+uv add requests
+uv run python main.py
+uv python list
+
+dpkg -l | grep python3.14
+
+# python 3.14 완전 제거
+sudo apt remove --purge python3.14 libpython3.14-stdlib -y
+sudo apt autoremove --purge -y
+sudo apt clean
+```
+
+### Ubuntu Service Example
+
+```ini
+# sudo vim /etc/systemd/system/buddham-api.service
+
+[Unit]
+Description=Buddham API Service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+
+# 작업 디렉토리
+WorkingDirectory=/home/ubuntu/WebServer/kr.co.buddham/api
+
+# 실행 명령
+ExecStart=/usr/bin/dotnet /home/ubuntu/WebServer/kr.co.buddham/api/Buddham.API.dll
+
+# 환경 변수
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+# 로그 경로 설정 (표준 출력과 에러를 파일로 리다이렉트)
+StandardOutput=append:/homeubuntu/WebServer/kr.co.buddham/api/buddham-api.log
+StandardError=append:/home/ubuntu/WebServer/kr.co.buddham/api/buddham-api.err
+
+# 재시작 정책 (macOS 의 KeepAlive 역할)
+Restart=always
+RestartSec=10
+
+# 권장 옵션 (dotnet 앱은 SIGTERM 을 잘 처리하므로 graceful shutdown 가능)
+KillSignal=SIGINT
+SyslogIdentifier=buddham-api
+
+[Install]
+WantedBy=multi-user.target
+
+# 시스템에 등록
+# --> $ sudo systemctl daemon-reload
+
+# 서비스 시작 및 자동 실행 설정
+# --> $ systemctl start buddham-api
+# --> $ systemctl enable buddham-api
+
+# 상태 확인
+sudo systemctl status buddham-api
+
+# 로그 확인
+cat /home/ubuntu/WebServer/kr.co.buddham/api/buddham-api.log
+sudo jurnalctl -u buddham-api -f
+
+```
+
+### Create .NET Solution
+
+```bash
+dotnet new sln -n ViVaKR
+mkdir -p src && cd src
+dotnet new webapi -n ViVaKR.Api --framework net9.0
+dotnet new blazorwasm -n ViVaKR.UI --framework net9.0
+dotnet new classlib -n ViVaKR.Core
+dotnet new classlib -n ViVaKR.Infrastructure
+dotnet sln add src/**/ViVaKR.*.csproj
+docker build -t vivakr/api:9.0 .
+docker build -t vivakr/ui:9.0 .
+
+# 솔루션 차원에서의 배포
+dotnet build ViVaKR.sln -c Release
+dotnet publish src/ViVaKR.Api/ViVaKR.Api.csproj -c Release -o ./publish/api
+dotnet publish src/ViVaKR.UI/ViVaKR.UI.csproj -c Release -o ./publish/ui
+```
+
+```powershell
+# build_all.ps1
+dotnet build ViVaKR.sln -c Release
+
+$projects = @(
+  "src/ViVaKR.Api/ViVaKR.Api.csproj",
+  "src/ViVaKR.UI/ViVaKR.UI.csproj"
+)
+
+foreach ($proj in $projects) {
+  dotnet publish $proj -c Release -o "./publish/$(Split-Path $proj -LeafBase)"
+}
+```
+
+```xml
+<Project>
+  <PropertyGroup>
+    <OutputPath>$(SolutionDir)build\$(MSBuildProjectName)\</OutputPath>
+  </PropertyGroup>
+</Project>
+```
+
+| 명령어           | 솔루션 지원        | 결과물                       | 주용도      |
+| ---------------- | ------------------ | ---------------------------- | ----------- |
+| `dotnet build`   | ✅ 지원            | DLL (개발용)                 | 컴파일 확인 |
+| `dotnet run`     | ✅ 지원            | 실행 (개발용)                | 테스트 실행 |
+| `dotnet publish` | ❌ (프로젝트 전용) | DLL, deps.json, runtime 포함 | 배포용      |
+
+### ZSH
 
 ```zsh
 
@@ -82,7 +225,7 @@
     compfiles	    false		private		typeset		zstat
     compgroups	    fc		    pushd		ulimit		zstyle
     - 외부 명령어 (external-command) :별도로 설치해야만 실행할 수 있는 명령어
-        - type pwd, type pwd
+        - type pwd, type pwd ...
     -----------------------------------------------------------------
 
     [ Commands ]
@@ -608,11 +751,11 @@
 ## Run Level
 
 - 초기화 명령어 -> init 뒤의 숫자
-    >- 0 : Power Off
-    >- 6 : Reboot
-    >- 1 : Rescue
-    >- 2, 3, 4 : 3번이 보편적 (Server)
-    >- 5 : Grapical, 그래픽 모드의 다중 사용자 모드
+  > - 0 : Power Off
+  > - 6 : Reboot
+  > - 1 : Rescue
+  > - 2, 3, 4 : 3번이 보편적 (Server)
+  > - 5 : Grapical, 그래픽 모드의 다중 사용자 모드
 
 ```bash
 
@@ -715,10 +858,10 @@
 
 - sys_write
 - NR = 1
-- unsigned int fd (File Descriptor), const char *buf (Location of string to write), size_t count (Length of string)
-    - 0 : Standard Input
-    - 1 : Standard Output
-    - 2 : Standard Error
+- unsigned int fd (File Descriptor), const char \*buf (Location of string to write), size_t count (Length of string)
+  - 0 : Standard Input
+  - 1 : Standard Output
+  - 2 : Standard Error
 
 ```bash
 
