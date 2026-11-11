@@ -181,24 +181,26 @@
       - 복사 (y)
     - 운영체제와 공유 : "+ or "*
     :reg[isters] - 레지스터 내용 확인
+
     "xy - 레지스터 x 복사
     "xp - 레지스터 x 붙여넣기
+
     "+y - 클립보드 복사
     "+p - 클립보드 붙여넣기
 
-        Tip 특수 레지스터:
-             0 - 최근 복사 레지스터
-             " - 최근 사용 레지스터
-             % - 현재 파일명
-             # - 대체 파일명
-             * - 클립보드 (X11 primary)
-             + - 클립보드 (X11 clipboard)
-             / - 최근 검색 패턴
-             : - 최근 Vim 명령줄
-             . - 최근 삽입 텍스트
-             - - 최근 제거 문자
-             = - 표현식 레지스터
-             _ - 블랙홀 레지스터
+    Tip 특수 레지스터:
+    0 - 최근 복사 레지스터
+    " - 최근 사용 레지스터
+    % - 현재 파일명
+    # - 대체 파일명
+    * - 클립보드 (X11 primary)
+    + - 클립보드 (X11 clipboard)
+    / - 최근 검색 패턴
+    : - 최근 Vim 명령줄
+    . - 최근 삽입 텍스트
+    - - 최근 제거 문자
+    = - 표현식 레지스터
+     _ - 블랙홀 레지스터
 
 ## 마킹, marking
 
@@ -270,7 +272,7 @@
     :w !sudo tee % - 관리자로 저장하기
     :wq or :x or ZZ - 저장하고 나가기
     :e [file] -> 파일 불러오기
-    :e# -> 이전에 펴집하던 파일을 불러옴
+    :e# -> 이전에 편집하던 파일을 불러옴
     :r [file]<CR> -> [file]을 커서 위치에 끼워 넣기
     :r ![command]<CR> -> 실행결과를 끼워 넣기
     :set [option]<CR> -> option turn on
@@ -499,7 +501,6 @@ Ps = 6  -> steady bar (xterm).
         -> [^adf] => ecept a, d, f
         -> [^a-f]
         -> [ab^] => a, b, ^
-    >- *        : >= 0  , a* => null, a, , aaa, aaaa....
     >- +        : > 0   , a+ => a, , aaa, aaaa....
     >- |        : a | b , a or b
     >- ?        : ab? => a or ab
@@ -533,7 +534,7 @@ Ps = 6  -> steady bar (xterm).
 
     >- Ctrl + u   --> Move half a screen up
     >- Ctrl + d   --> Move half a screen down
-    >- Ctrl + b   --> Mojve one full screen up
+    >- Ctrl + b   --> Move one full screen up
     >- Ctrl + f   --> Move one full screen down
     >- zo          --> Open a fold
     >- zc          --> Close a fold
@@ -543,19 +544,11 @@ Ps = 6  -> steady bar (xterm).
 
 ---
 
-## 도움말 또는 터미널 과 편집기 사이 토글하기
-
-    >- <c-w, w> - between help <-> editor
-
-## Multi Line Edit Same
-
 ## GoTo Line Number
 
     :<line number>
 
 :help v_g_CTRL-A
-
-## Increament the number -> `<c-a>`
 
 ## Recording (Macro, 일련번호를 98번 증가시키기)
 
@@ -572,7 +565,6 @@ Ps = 6  -> steady bar (xterm).
 
 ## Record the following macro
 
-- [ref](https://vi.stackexchange.com/questions/20038/visual-block-mode-edit-with-sequential-number)
 - Mark a is at origin number line : ma
 - Mark b is at second number line : mb
 
@@ -682,7 +674,7 @@ Ps = 6  -> steady bar (xterm).
     `:split`  (상하분리)
     `:term ++curwin` (현재 창에 터미널 열기)
     `:bo 10sp`       (하단으로 10 크기 만큼 분리)
-    `:bo 10sp | term ++curwin  (하단으로 분리하고 터미널 열기)
+    `:bo 10sp | term   (하단으로 분리하고 터미널 열기)
 
 ## 파일열기 및 목록 보기
 
